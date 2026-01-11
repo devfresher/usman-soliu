@@ -1,0 +1,22 @@
+{
+	"name": "Usman Soliu - Tech Lead & Product Engineer",
+	"short_name": "Usman Soliu",
+	"description": "Tech Lead & Product Engineer building scalable, impact-driven systems",
+	"icons": [
+		{
+			"src": "/favicon.svg",
+			"sizes": "any",
+			"type": "image/svg+xml"
+		},
+		{
+			"src": "/favicon.ico",
+			"sizes": "32x32",
+			"type": "image/x-icon"
+		}
+	],
+	"theme_color": "#1a1a1a",
+	"background_color": "#fafafa",
+	"display": "standalone",
+	"start_url": "/",
+	"scope": "/"
+}
