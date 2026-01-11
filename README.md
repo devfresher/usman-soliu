@@ -88,11 +88,21 @@ This project can be deployed to **Vercel** or **Render**.
    - **Node Version**: `20` (or latest LTS)
 
 4. **Add Environment Variables:**
-   - `NODE_ENV`: `production`
-   - `SMTP_HOST`: Your SMTP host (e.g., `smtp.gmail.com`)
-   - `SMTP_PORT`: `587`
-   - `SMTP_USER`: Your email address
-   - `SMTP_PASS`: Your email app password (not your regular password)
+
+   **Required for Email (Resend):**
+   - `RESEND_API_KEY`: Your Resend API key (get from [resend.com](https://resend.com))
+   - `RESEND_FROM_EMAIL`: Your verified sender email (e.g., `contact@yourdomain.com`)
+   - `CONTACT_EMAIL`: Your email address where you want to receive messages (defaults to `hello@devfresher.me`)
+
+   **Recommended - Telegram (FREE!):**
+   - `TELEGRAM_BOT_TOKEN`: Your Telegram bot token from @BotFather
+   - `TELEGRAM_CHAT_ID`: Your Telegram chat ID
+
+   **Optional for WhatsApp (Twilio - Paid):**
+   - `TWILIO_ACCOUNT_SID`: Your Twilio Account SID
+   - `TWILIO_AUTH_TOKEN`: Your Twilio Auth Token
+   - `TWILIO_WHATSAPP_NUMBER`: Your Twilio WhatsApp number (e.g., `+14155238886`)
+   - `WHATSAPP_NUMBER`: Your WhatsApp number in E.164 format (e.g., `+1234567890`)
 
 5. **Deploy**
    - Click "Create Web Service"

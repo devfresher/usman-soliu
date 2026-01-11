@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, FileText, Send } from 'lucide-react';
+import { Mail, Linkedin, Github, FileText, Send, MessageCircle } from 'lucide-react';
 import Button from '@/components/button';
 import { DecorativeBackground } from '@/components/decorative-bg';
 import ResumeViewer from '@/components/resume-viewer';
@@ -11,6 +11,7 @@ export default function Contact() {
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
+		whatsapp: '',
 		subject: '',
 		message: '',
 	});
@@ -34,7 +35,7 @@ export default function Contact() {
 
 			if (response.ok) {
 				setSubmitStatus('success');
-				setFormData({ name: '', email: '', subject: '', message: '' });
+				setFormData({ name: '', email: '', whatsapp: '', subject: '', message: '' });
 			} else {
 				setSubmitStatus('error');
 			}
@@ -105,6 +106,20 @@ export default function Contact() {
 										required
 										value={formData.email}
 										onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+										className="rounded-lg border border-gray-300/80 bg-background px-4 py-3 text-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-2 focus:ring-foreground/20"
+									/>
+								</div>
+
+							<div className="flex flex-col gap-3">
+								<label htmlFor="whatsapp" className="text-sm font-medium text-foreground">
+									WhatsApp Number <span className="text-xs text-muted">(Optional)</span>
+								</label>
+									<input
+										type="tel"
+										id="whatsapp"
+										placeholder="+1234567890"
+										value={formData.whatsapp}
+										onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
 										className="rounded-lg border border-gray-300/80 bg-background px-4 py-3 text-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-2 focus:ring-foreground/20"
 									/>
 								</div>
@@ -205,7 +220,7 @@ export default function Contact() {
 
 						<div className="space-y-6">
 							<a
-								href="mailto:info@devfresher.me"
+								href="mailto:hello@devfresher.me"
 								className="group flex items-center gap-5 rounded-xl border border-gray-200/50 bg-background/50 p-7 backdrop-blur-sm transition-all hover:border-gray-300/80 hover:shadow-lg"
 							>
 								<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-foreground/5 text-foreground transition-transform group-hover:scale-110">
@@ -213,7 +228,7 @@ export default function Contact() {
 								</div>
 								<div className="flex-1">
 									<h3 className="mb-2 font-semibold text-foreground">Email</h3>
-									<p className="text-sm text-muted">info@devfresher.me</p>
+									<p className="text-sm text-muted">hello@devfresher.me</p>
 								</div>
 							</a>
 

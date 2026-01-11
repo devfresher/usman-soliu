@@ -10,17 +10,23 @@ import Image from 'next/image';
 
 const techStack = [
 	{ image: '/logos/nodejs.png', name: 'Node.js', color: 'from-green-500' },
-	{ image: '/logos/golang.png', name: 'Golang', color: 'from-cyan-500' },
-	{ image: '/logos/aws.png', name: 'AWS', color: 'from-amber-500' },
+	{ image: '/logos/javascript.png', name: 'JavaScript', color: 'from-yellow-500' },
 	{ image: '/logos/typescript.png', name: 'TypeScript', color: 'from-blue-500' },
+	{ image: '/logos/openai.png', name: 'OpenAI', color: 'from-green-600' },
+	{ image: '/logos/langchain.png', name: 'LangChain', color: 'from-red-600' },
 	{ image: '/logos/nestjs.png', name: 'NestJS', color: 'from-red-500' },
 	{ image: '/logos/expressjs.png', name: 'Express.js', color: 'from-gray-600' },
-	{ image: '/logos/php.png', name: 'PHP', color: 'from-indigo-600' },
+	{ image: '/logos/golang.png', name: 'Golang', color: 'from-cyan-500' },
+	{ image: '/logos/aws.png', name: 'AWS', color: 'from-amber-500' },
+	{ image: '/logos/docker.png', name: 'Docker', color: 'from-blue-600' },
 	{ image: '/logos/postgresql.png', name: 'PostgreSQL', color: 'from-indigo-500' },
-	{ image: '/logos/mysql.png', name: 'MySQL', color: 'from-blue-500' },
+	{ image: '/logos/mysql.png', name: 'MySQL', color: 'from-blue-700' },
+	{ image: '/logos/reactjs.png', name: 'React.js', color: 'from-cyan-500' },
+	{ image: '/logos/nextjs.png', name: 'Next.js', color: 'from-gray-900' },
 	{ image: '/logos/mongodb.png', name: 'MongoDB', color: 'from-emerald-500' },
 	{ image: '/logos/redis.png', name: 'Redis', color: 'from-orange-500' },
-	{ image: '/logos/docker.png', name: 'Docker', color: 'from-blue-600' },
+	{ image: '/logos/rabbitmq.png', name: 'RabbitMQ', color: 'from-orange-600' },
+	{ image: '/logos/php.png', name: 'PHP', color: 'from-indigo-600' },
 ];
 
 function TechStackCarousel() {

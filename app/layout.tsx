@@ -84,11 +84,9 @@ export const metadata: Metadata = {
 	icons: {
 		icon: [
 			{ url: '/favicon.svg', type: 'image/svg+xml' },
-			{ url: '/favicon.ico', sizes: 'any' },
+			{ url: '/favicon.png', sizes: 'any' },
 		],
-		apple: [
-			{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-		],
+		apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
 	},
 	manifest: '/site.webmanifest',
 	alternates: {
@@ -98,11 +96,11 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
+	return (
 		<html lang="en" className={inter.variable}>
 			<head>
 				<link rel="canonical" href="https://devfresher.me" />
@@ -122,7 +120,7 @@ export default function RootLayout({
 								'https://linkedin.com/in/devfresher',
 								'https://github.com/devfresher',
 							],
-							email: 'info@devfresher.me',
+							email: 'hello@devfresher.me',
 							knowsAbout: [
 								'Backend Development',
 								'Node.js',
@@ -173,7 +171,7 @@ export default function RootLayout({
 				<Navigation />
 				<main className="min-h-screen">{children}</main>
 				<Footer />
-      </body>
-    </html>
-  );
+			</body>
+		</html>
+	);
 }
