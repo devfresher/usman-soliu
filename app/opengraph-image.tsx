@@ -1,4 +1,4 @@
-import { ImageResponse } from '@vercel/og';
+import { ImageResponse } from 'next/og';
 
 export const alt = 'Usman Soliu - Tech Lead & Product Engineer';
 export const size = {
