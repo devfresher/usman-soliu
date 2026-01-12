@@ -99,11 +99,11 @@ function TechStackCarousel() {
 export default function Home() {
 	const [isResumeOpen, setIsResumeOpen] = useState(false);
 	return (
-		<div className="relative min-h-[calc(100vh-200px)]">
+		<div className="relative flex min-h-[calc(100vh-4rem)] flex-col">
 			<DecorativeBackground />
 
-			<div className="relative mx-auto w-full px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8">
-				<div className="mx-auto grid max-w-6xl gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
+			<div className="relative mx-auto flex w-full flex-1 flex-col justify-center px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8">
+				<div className="mx-auto grid w-full max-w-6xl gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
 					{/* Left Column - Hero Content */}
 					<motion.div
 						initial={{ opacity: 0, x: -30 }}

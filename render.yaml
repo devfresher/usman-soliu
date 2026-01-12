@@ -1,28 +1,16 @@
 services:
-  - type: web
-    name: usman-soliu-portfolio
-    env: node
-    plan: starter
-    buildCommand: pnpm install && pnpm build
-    startCommand: pnpm start
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: RESEND_API_KEY
-        sync: false
-      - key: RESEND_FROM_EMAIL
-        sync: false
-      - key: CONTACT_EMAIL
-        sync: false
-      - key: TELEGRAM_BOT_TOKEN
-        sync: false
-      - key: TELEGRAM_CHAT_ID
-        sync: false
-      - key: TWILIO_ACCOUNT_SID
-        sync: false
-      - key: TWILIO_AUTH_TOKEN
-        sync: false
-      - key: TWILIO_WHATSAPP_NUMBER
-        sync: false
-      - key: WHATSAPP_NUMBER
-        sync: false
+    - type: web
+      name: usman-soliu-portfolio
+      env: node
+      plan: starter
+      buildCommand: pnpm install && pnpm build
+      startCommand: pnpm start
+      envVars:
+          - key: NODE_ENV
+            value: production
+          - key: RESEND_API_KEY
+            sync: false
+          - key: RESEND_FROM_EMAIL
+            sync: false
+          - key: CONTACT_EMAIL
+            sync: false

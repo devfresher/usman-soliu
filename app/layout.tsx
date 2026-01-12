@@ -84,7 +84,7 @@ export const metadata: Metadata = {
 	icons: {
 		icon: [
 			{ url: '/favicon.svg', type: 'image/svg+xml' },
-			{ url: '/favicon.png', sizes: 'any' },
+			{ url: '/favicon.ico', sizes: 'any' },
 		],
 		apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
 	},
@@ -141,7 +141,22 @@ export default function RootLayout({
 							],
 							worksFor: {
 								'@type': 'Organization',
-								name: 'Freelance / Available',
+								name: 'HCMatrix Limited',
+								url: 'https://hcmatrix.com',
+								logo: 'https://hcmatrix.com/wp-content/uploads/2024/12/HC_Matrix_HR_Solution-Logo_design-removebg-preview-1.png',
+								description:
+									'HCMatrix is a modern HR and payroll management platform designed for African businesses. Streamline performance reviews, leave management, payroll, and more with ease.',
+								address: {
+									'@type': 'PostalAddress',
+									streetAddress:
+										'17 Charles Ifeanyi St, Eti-Osa, Lagos 106104, Lagos',
+									city: 'Lekki',
+									state: 'Lagos',
+									postalCode: '106104',
+									country: 'Nigeria',
+								},
+								email: 'info@hcmatrix.com',
+								phone: '+1 716-317-9506',
 							},
 						}),
 					}}
