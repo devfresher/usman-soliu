@@ -10,7 +10,7 @@ const highlights = [
 	{
 		icon: <Code2 className="h-5 w-5" />,
 		title: 'Production Systems',
-		description: 'Building scalable systems with Node.js and TypeScript',
+		description: 'Building scalable systems that handle real complexity and traffic',
 	},
 	{
 		icon: <Users className="h-5 w-5" />,
@@ -39,15 +39,15 @@ export default function About() {
 									<div className="flex items-center gap-2 sm:gap-3">
 										<div className="h-px w-8 bg-foreground/20 sm:w-12" />
 										<span className="text-xs font-medium uppercase tracking-wider text-muted sm:text-sm">
-											About
+											How I Work
 										</span>
 									</div>
 									<h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-										Usman Soliu
+										How I Work
 									</h1>
 									<p className="text-base text-muted sm:text-lg md:text-xl">
-										Tech Lead & Product Engineer with a focus on building
-										systems that matter.
+										My approach to solving problems, building systems, and
+										leading teams.
 									</p>
 								</div>
 
@@ -58,10 +58,12 @@ export default function About() {
 										transition={{ duration: 0.6, delay: 0.2 }}
 										className="mb-4"
 									>
-										I'm a Tech Lead and Product Engineer. I build production
-										systems that scale, mostly with Node.js and TypeScript. I've
-										architected and delivered systems that handle real
-										complexity and traffic.
+										I'm a Tech Lead and Product Engineer. I solve complex
+										business problems by designing and building systems that
+										scale. My approach starts with understanding the problem,
+										then architecting solutions that deliver measurable business
+										impact. I've led teams and delivered systems that handle
+										real complexity, scale, and traffic.
 									</motion.p>
 								</div>
 
@@ -82,10 +84,12 @@ export default function About() {
 									</div>
 									<p className="text-sm leading-relaxed text-foreground/80 sm:text-base">
 										I balance hands-on engineering with team leadership. I
-										design system architectures, make technical decisions, and
-										ensure we're building maintainable, scalable solutions. I
-										mentor engineers and create environments where good
-										engineering practices thrive.
+										design system architectures that solve real business
+										problems, make technical decisions that balance speed and
+										quality, and ensure we're building maintainable, scalable
+										solutions. I mentor engineers and create environments where
+										good engineering practices thrive, enabling teams to deliver
+										impact consistently.
 									</p>
 								</motion.div>
 
@@ -105,11 +109,12 @@ export default function About() {
 										</h2>
 									</div>
 									<p className="text-sm leading-relaxed text-foreground/80 sm:text-base">
-										My technical focus spans backend fundamentals: APIs,
-										databases, caching, queues, security. I work with
-										PostgreSQL, MongoDB, Redis, and various cloud services. I
-										care about system design, performance, and engineering
-										discipline that prevents technical debt.
+										My approach centers on solving problems through solid system
+										design. I focus on building systems that are scalable,
+										maintainable, and performant. I care about architecture
+										decisions that prevent technical debt, performance
+										optimizations that reduce costs, and engineering practices
+										that enable teams to move fast without breaking things.
 									</p>
 								</motion.div>
 
@@ -153,10 +158,11 @@ export default function About() {
 											</h2>
 										</div>
 										<p className="text-sm leading-relaxed text-foreground/80 sm:text-base">
-											I mentor backend engineers, particularly around Node.js
-											fundamentals, and contribute to programs like the Break
+											I mentor engineers on fundamentals of computing and
+											programming, and contribute to programs like the Break
 											into Tech bootcamp. I focus on teaching solid
-											foundations.
+											foundations that apply regardless of specific
+											technologies.
 										</p>
 									</motion.div>
 
@@ -277,7 +283,73 @@ export default function About() {
 						</div>
 					</div>
 
-					{/* Tech Stack Section */}
+					{/* Engineering Principles Section */}
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.6 }}
+						className="space-y-8 sm:space-y-12"
+					>
+						<div className="space-y-4 text-center">
+							<div className="flex items-center justify-center gap-3">
+								<div className="h-px w-12 bg-foreground/20" />
+								<span className="text-xs font-medium uppercase tracking-wider text-muted sm:text-sm">
+									Engineering Principles
+								</span>
+								<div className="h-px w-12 bg-foreground/20" />
+							</div>
+							<h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl">
+								How I Think About Engineering
+							</h2>
+							<p className="mx-auto max-w-2xl text-base text-muted sm:text-lg">
+								Principles that guide my technical decisions and system design.
+							</p>
+						</div>
+
+						<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 sm:gap-8">
+							{[
+								{
+									title: 'Clarity Before Performance',
+									description:
+										'Optimize for clarity and maintainability first. Performance matters, but readable code that others can understand and modify is more valuable.',
+								},
+								{
+									title: 'Boring Over Clever',
+									description:
+										'Prefer boring, reliable systems over clever ones. The best code is often the simplest solution that solves the problem.',
+								},
+								{
+									title: 'Design for Change',
+									description:
+										'Design systems for change, not perfection. Requirements evolve, and systems should be able to adapt without major rewrites.',
+								},
+								{
+									title: 'Business Constraints Matter',
+									description:
+										'Business constraints matter as much as technical ones. The best solution balances technical excellence with business needs.',
+								},
+							].map((principle, index) => (
+								<motion.div
+									key={principle.title}
+									initial={{ opacity: 0, y: 20 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									viewport={{ once: true }}
+									transition={{ duration: 0.5, delay: index * 0.1 }}
+									className="rounded-xl border border-gray-200/50 bg-background/50 p-6 backdrop-blur-sm transition-all hover:border-gray-300/80 hover:shadow-lg sm:p-8"
+								>
+									<h3 className="mb-3 text-lg font-semibold text-foreground sm:text-xl">
+										{principle.title}
+									</h3>
+									<p className="text-sm leading-relaxed text-foreground/70 sm:text-base">
+										{principle.description}
+									</p>
+								</motion.div>
+							))}
+						</div>
+					</motion.div>
+
+					{/* Tech Stack Section - Supporting Role */}
 					<TechStack />
 				</div>
 			</div>

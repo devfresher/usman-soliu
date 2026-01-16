@@ -86,6 +86,8 @@ export default async function Image() {
 						alignItems: 'center',
 						justifyContent: 'center',
 						paddingTop: '80px',
+						paddingLeft: '60px',
+						paddingRight: '60px',
 					}}
 				>
 					<h1
@@ -109,32 +111,49 @@ export default async function Image() {
 					>
 						Tech Lead & Product Engineer
 					</p>
+					<p
+						style={{
+							fontSize: '28px',
+							color: '#1a1a1a',
+							margin: '0 0 30px 0',
+							textAlign: 'center',
+							maxWidth: '900px',
+							lineHeight: '1.4',
+							fontWeight: '400',
+						}}
+					>
+						I design and scale backend systems that help businesses grow reliably
+					</p>
 					<div
 						style={{
 							display: 'flex',
-							gap: '12px',
+							gap: '16px',
 							flexWrap: 'wrap',
 							justifyContent: 'center',
-							maxWidth: '900px',
+							maxWidth: '1000px',
 						}}
 					>
-						{['Node.js', 'TypeScript', 'NestJS', 'Golang', 'AWS', 'Docker'].map(
-							(tech) => (
-								<div
-									key={tech}
-									style={{
-										padding: '8px 16px',
-										backgroundColor: '#1a1a1a',
-										color: '#fafafa',
-										borderRadius: '6px',
-										fontSize: '18px',
-										fontWeight: '500',
-									}}
-								>
-									{tech}
-								</div>
-							)
-						)}
+						{[
+							'Problem-First Thinking',
+							'System Architecture',
+							'Engineering Leadership',
+							'Business Impact',
+						].map((value) => (
+							<div
+								key={value}
+								style={{
+									padding: '10px 20px',
+									backgroundColor: '#f5f5f5',
+									color: '#1a1a1a',
+									border: '1px solid #e5e5e5',
+									borderRadius: '8px',
+									fontSize: '20px',
+									fontWeight: '500',
+								}}
+							>
+								{value}
+							</div>
+						))}
 					</div>
 				</div>
 
@@ -157,7 +176,7 @@ export default async function Image() {
 				>
 					<span style={{ color: '#27c93f' }}>$</span>
 					<span style={{ marginLeft: '10px', color: '#fafafa' }}>
-						Building scalable, impact-driven systems
+						Solving complex business problems through thoughtful system design
 					</span>
 				</div>
 			</div>

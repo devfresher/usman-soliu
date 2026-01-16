@@ -138,16 +138,15 @@ export default function TechStack() {
 					<div className="mb-3 flex items-center justify-center gap-2 sm:mb-4 sm:gap-3">
 						<div className="h-px w-8 bg-foreground/20 sm:w-12" />
 						<span className="text-xs font-medium uppercase tracking-wider text-muted sm:text-sm">
-							Tech Stack
+							Engineering Toolkit
 						</span>
 						<div className="h-px w-8 bg-foreground/20 sm:w-12" />
 					</div>
 					<h2 className="mb-3 text-2xl font-semibold tracking-tight text-foreground sm:mb-4 sm:text-3xl md:text-4xl">
-						Technologies I Work With
+						Tools I Use to Deliver
 					</h2>
 					<p className="mx-auto max-w-2xl text-sm text-muted sm:text-base md:text-lg">
-						A curated selection of tools and technologies I use to build scalable, production-ready
-						systems.
+						Technologies are tools. I choose the right tool for the problem at hand.
 					</p>
 				</motion.div>
 
@@ -163,53 +162,24 @@ export default function TechStack() {
 							key={tech.name}
 							variants={itemVariants}
 							whileHover={{
-								y: -10,
-								scale: 1.08,
-								rotate: [0, -2, 2, 0],
-								transition: { type: 'spring', stiffness: 400, damping: 17 },
+								y: -4,
+								scale: 1.02,
+								transition: { type: 'spring', stiffness: 300, damping: 20 },
 							}}
 							className="group relative"
 						>
 							<div
-								className={`relative flex flex-col items-center gap-2 rounded-xl border-2 ${tech.color} bg-background/60 p-4 backdrop-blur-sm transition-all duration-300 group-hover:shadow-2xl group-hover:border-opacity-40 sm:gap-3 sm:rounded-2xl sm:p-5 md:gap-4 md:p-6 lg:p-7 touch-manipulation`}
+								className={`relative flex flex-col items-center gap-2 rounded-xl border ${tech.color} bg-background/60 p-4 backdrop-blur-sm transition-all duration-200 group-hover:shadow-lg group-hover:border-opacity-60 sm:gap-3 sm:rounded-2xl sm:p-5 md:gap-4 md:p-6 touch-manipulation`}
 							>
-								{/* Animated icon with rotation */}
-								<motion.div
-									animate={{
-										y: [0, -6, 0],
-										rotate: [0, 5, -5, 0],
-									}}
-									transition={{
-										duration: 3 + index * 0.3,
-										repeat: Infinity,
-										ease: 'easeInOut',
-										delay: index * 0.15,
-									}}
-									className="relative flex h-10 w-10 items-center justify-center sm:h-12 sm:w-12 md:h-14 md:w-14"
-								>
-									{/* Glowing background on icon */}
-									<div className="absolute inset-0 rounded-xl bg-foreground/5 opacity-0 transition-opacity group-hover:opacity-100 blur-sm" />
+								{/* Static icon - no animations */}
+								<div className="relative flex h-10 w-10 items-center justify-center sm:h-12 sm:w-12 md:h-14 md:w-14">
 									<div className="relative z-10">{tech.icon}</div>
-								</motion.div>
+								</div>
 
-								{/* Tech name with fade effect */}
-								<motion.span
-									initial={{ opacity: 0.7 }}
-									whileHover={{ opacity: 1 }}
-									className="text-center text-sm font-semibold text-foreground transition-opacity"
-								>
+								{/* Tech name */}
+								<span className="text-center text-sm font-medium text-foreground/80 transition-colors group-hover:text-foreground">
 									{tech.name}
-								</motion.span>
-
-								{/* Hover glow effect */}
-								<motion.div
-									initial={{ opacity: 0 }}
-									whileHover={{ opacity: 1 }}
-									className="absolute inset-0 rounded-2xl bg-gradient-to-br from-foreground/10 via-foreground/5 to-transparent"
-								/>
-
-								{/* Animated border glow */}
-								<div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-transparent via-foreground/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+								</span>
 							</div>
 						</motion.div>
 					))}

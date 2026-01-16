@@ -9,9 +9,9 @@ import MobileMenu from './mobile-menu';
 
 const navItems = [
 	{ href: '/', label: 'Home', symbol: '~' },
-	{ href: '/about', label: 'About', symbol: '//' },
-	{ href: '/projects', label: 'Projects', symbol: '{}' },
-	{ href: '/writing', label: 'Writing', symbol: '<>' },
+	{ href: '/about', label: 'How I Work', symbol: '//' },
+	{ href: '/projects', label: 'Case Studies', symbol: '{}' },
+	{ href: '/writing', label: 'Insights', symbol: '<>' },
 	{ href: '/mentorship', label: 'Mentorship', symbol: '()' },
 	{ href: '/contact', label: 'Contact', symbol: '[]' },
 ];

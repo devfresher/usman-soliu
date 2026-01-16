@@ -92,14 +92,14 @@ export default function Projects() {
 						<div className="flex items-center gap-3">
 							<div className="h-px w-12 bg-foreground/20" />
 							<span className="text-sm font-medium uppercase tracking-wider text-muted">
-								Projects
+								Case Studies
 							</span>
 						</div>
 						<h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-							Featured Work
+							Case Studies
 						</h1>
 						<p className="text-base text-muted sm:text-lg">
-							Backend systems designed and built for production use.
+							Real problems, thoughtful solutions, measurable impact.
 						</p>
 					</div>
 				</motion.div>
@@ -142,25 +142,37 @@ export default function Projects() {
 									</span>
 								</div>
 
-								{/* Description */}
-								<p className="mb-6 text-sm leading-relaxed text-foreground/70 line-clamp-2">
-									{project.description}
-								</p>
+								{/* Problem Statement - Most Prominent */}
+								<div className="mb-4 rounded-lg border-l-2 border-accent/50 bg-accent/5 p-4">
+									<p className="text-xs font-semibold text-foreground/90 mb-2 uppercase tracking-wider">The Problem</p>
+									<p className="text-sm leading-relaxed text-foreground/80">
+										{project.problem}
+									</p>
+								</div>
 
-								{/* Tech Stack - Compact */}
+								{/* Solution/Description */}
+								<div className="mb-4">
+									<p className="text-xs font-semibold text-foreground/90 mb-2 uppercase tracking-wider">The Solution</p>
+									<p className="text-sm leading-relaxed text-foreground/70">
+										{project.description}
+									</p>
+								</div>
+
+								{/* Architecture Decisions - Supporting Details */}
 								<div className="mb-6">
+									<p className="text-xs font-medium text-foreground/80 mb-2">Key Architecture Decisions</p>
 									<div className="flex flex-wrap gap-1.5">
-										{project.techStack.slice(0, 4).map((tech) => (
+										{project.architecture.slice(0, 3).map((arch) => (
 											<span
-												key={tech}
-												className="rounded-md bg-gray-100/80 px-2 py-1 text-[10px] font-medium text-foreground/70"
+												key={arch}
+												className="rounded-md bg-foreground/5 px-2 py-1 text-[10px] font-medium text-foreground/70"
 											>
-												{tech}
+												{arch}
 											</span>
 										))}
-										{project.techStack.length > 4 && (
-											<span className="rounded-md bg-gray-100/80 px-2 py-1 text-[10px] font-medium text-foreground/70">
-												+{project.techStack.length - 4}
+										{project.architecture.length > 3 && (
+											<span className="rounded-md bg-foreground/5 px-2 py-1 text-[10px] font-medium text-foreground/70">
+												+{project.architecture.length - 3} more
 											</span>
 										)}
 									</div>
