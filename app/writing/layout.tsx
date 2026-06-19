@@ -1,23 +1,14 @@
 import type { Metadata } from 'next';
+import { siteConfig } from '@/lib/data/site';
 
 export const metadata: Metadata = {
-	title: 'Writing',
-	description:
-		'Technical insights and articles by Usman Soliu on backend development, Node.js internals, system design, caching strategies, queue management, and software engineering best practices.',
+	title: 'Insights',
+	description: 'Writing on backend engineering and system design from Code Along on Hashnode.',
 	openGraph: {
-		title: 'Writing | Usman Soliu',
-		description:
-			'Technical insights and articles on backend development, Node.js internals, system design, and software engineering.',
-		url: 'https://devfresher.me/writing',
+		title: `Insights | ${siteConfig.name}`,
+		url: `${siteConfig.url}/writing`,
 	},
-	twitter: {
-		title: 'Writing | Usman Soliu',
-		description:
-			'Technical insights and articles on backend development, Node.js internals, system design, and software engineering.',
-	},
-	alternates: {
-		canonical: 'https://devfresher.me/writing',
-	},
+	alternates: { canonical: `${siteConfig.url}/writing` },
 };
 
 export default function WritingLayout({

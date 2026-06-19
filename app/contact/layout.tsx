@@ -1,23 +1,14 @@
 import type { Metadata } from 'next';
+import { contactIntro, siteConfig } from '@/lib/data/site';
 
 export const metadata: Metadata = {
 	title: 'Contact',
-	description:
-		'Get in touch with Usman Soliu. Open to opportunities, mentorship, and meaningful collaborations. Connect via email, LinkedIn, or GitHub.',
+	description: contactIntro,
 	openGraph: {
-		title: 'Contact | Usman Soliu',
-		description:
-			'Get in touch with Usman Soliu. Open to opportunities, mentorship, and meaningful collaborations.',
-		url: 'https://devfresher.me/contact',
+		title: `Contact | ${siteConfig.name}`,
+		url: `${siteConfig.url}/contact`,
 	},
-	twitter: {
-		title: 'Contact | Usman Soliu',
-		description:
-			'Get in touch with Usman Soliu. Open to opportunities, mentorship, and meaningful collaborations.',
-	},
-	alternates: {
-		canonical: 'https://devfresher.me/contact',
-	},
+	alternates: { canonical: `${siteConfig.url}/contact` },
 };
 
 export default function ContactLayout({

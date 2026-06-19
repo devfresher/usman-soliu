@@ -1,23 +1,15 @@
 import type { Metadata } from 'next';
+import { siteConfig } from '@/lib/data/site';
 
 export const metadata: Metadata = {
-	title: 'Projects',
+	title: 'Case Studies',
 	description:
-		'Explore projects by Usman Soliu including Zaakiyah (AI-driven Zakaat platform), DevFresher (mentorship platform), and other scalable backend systems built with Node.js, TypeScript, NestJS, and modern cloud technologies.',
+		'Backend engineering case studies — Zaakiyah, HCMatrix, Haqqpay, Togo Mobility, and Talentcona.',
 	openGraph: {
-		title: 'Projects | Usman Soliu',
-		description:
-			'Explore projects by Usman Soliu including Zaakiyah, DevFresher, and other scalable backend systems.',
-		url: 'https://devfresher.me/projects',
+		title: `Case Studies | ${siteConfig.name}`,
+		url: `${siteConfig.url}/projects`,
 	},
-	twitter: {
-		title: 'Projects | Usman Soliu',
-		description:
-			'Explore projects by Usman Soliu including Zaakiyah, DevFresher, and other scalable backend systems.',
-	},
-	alternates: {
-		canonical: 'https://devfresher.me/projects',
-	},
+	alternates: { canonical: `${siteConfig.url}/projects` },
 };
 
 export default function ProjectsLayout({
