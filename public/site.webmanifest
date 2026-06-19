@@ -1,17 +1,12 @@
 {
-	"name": "Usman Soliu - Tech Lead & Product Engineer",
+	"name": "Usman Soliu — Senior Product-focused Backend Engineer",
 	"short_name": "Usman Soliu",
-	"description": "Tech Lead & Product Engineer building scalable, impact-driven systems",
+	"description": "Backend engineer focused on system design, APIs, and the parts of products that need to stay up when usage grows.",
 	"icons": [
 		{
 			"src": "/favicon.svg",
 			"sizes": "any",
 			"type": "image/svg+xml"
-		},
-		{
-			"src": "/favicon.png",
-			"sizes": "32x32",
-			"type": "image/x-icon"
 		}
 	],
 	"theme_color": "#1a1a1a",

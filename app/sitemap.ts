@@ -1,9 +1,11 @@
 import { MetadataRoute } from 'next';
+import { caseStudies } from '@/lib/data/case-studies';
+import { siteConfig } from '@/lib/data/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-	const baseUrl = 'https://devfresher.me';
+	const baseUrl = siteConfig.url;
 
-	return [
+	const staticPages: MetadataRoute.Sitemap = [
 		{
 			url: baseUrl,
 			lastModified: new Date(),
@@ -41,4 +43,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 0.5,
 		},
 	];
+
+	const projectPages: MetadataRoute.Sitemap = caseStudies.map((study) => ({
+		url: `${baseUrl}/projects/${study.slug}`,
+		lastModified: new Date(),
+		changeFrequency: 'monthly',
+		priority: 0.85,
+	}));
+
+	return [...staticPages, ...projectPages];
 }

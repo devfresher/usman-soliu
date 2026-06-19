@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
+import { principles, siteConfig } from '@/lib/data/site';
 
-export const alt = 'Usman Soliu - Tech Lead & Product Engineer';
+export const alt = `${siteConfig.name} — ${siteConfig.title}`;
 export const size = {
 	width: 1200,
 	height: 630,
@@ -8,7 +9,6 @@ export const size = {
 
 export const contentType = 'image/png';
 
-// Force runtime to be edge for better compatibility
 export const runtime = 'edge';
 
 export default async function Image() {
@@ -27,7 +27,6 @@ export default async function Image() {
 					fontFamily: 'system-ui, -apple-system, sans-serif',
 				}}
 			>
-				{/* Terminal-style header */}
 				<div
 					style={{
 						display: 'flex',
@@ -69,7 +68,7 @@ export default async function Image() {
 					<span
 						style={{
 							marginLeft: '20px',
-							color: '#60a5fa',
+							color: '#818cf8',
 							fontSize: '14px',
 							fontFamily: 'monospace',
 						}}
@@ -78,7 +77,6 @@ export default async function Image() {
 					</span>
 				</div>
 
-				{/* Main content */}
 				<div
 					style={{
 						display: 'flex',
@@ -94,27 +92,29 @@ export default async function Image() {
 						style={{
 							fontSize: '72px',
 							fontWeight: '700',
-							color: '#1a1a1a',
+							color: '#171717',
 							margin: '0 0 20px 0',
 							textAlign: 'center',
 						}}
 					>
-						Usman Soliu
+						{siteConfig.name}
 					</h1>
 					<p
 						style={{
-							fontSize: '32px',
-							color: '#4a4a4a',
-							margin: '0 0 40px 0',
+							fontSize: '26px',
+							color: '#525252',
+							margin: '0 0 32px 0',
 							textAlign: 'center',
+							maxWidth: '900px',
+							lineHeight: '1.35',
 						}}
 					>
-						Tech Lead & Product Engineer
+						{siteConfig.title}
 					</p>
 					<p
 						style={{
-							fontSize: '28px',
-							color: '#1a1a1a',
+							fontSize: '24px',
+							color: '#171717',
 							margin: '0 0 30px 0',
 							textAlign: 'center',
 							maxWidth: '900px',
@@ -122,7 +122,7 @@ export default async function Image() {
 							fontWeight: '400',
 						}}
 					>
-						I design and scale backend systems that help businesses grow reliably
+						{siteConfig.description}
 					</p>
 					<div
 						style={{
@@ -133,31 +133,25 @@ export default async function Image() {
 							maxWidth: '1000px',
 						}}
 					>
-						{[
-							'Problem-First Thinking',
-							'System Architecture',
-							'Engineering Leadership',
-							'Business Impact',
-						].map((value) => (
+						{principles.map((principle) => (
 							<div
-								key={value}
+								key={principle.title}
 								style={{
 									padding: '10px 20px',
-									backgroundColor: '#f5f5f5',
-									color: '#1a1a1a',
-									border: '1px solid #e5e5e5',
+									backgroundColor: '#ffffff',
+									color: '#171717',
+									border: '1px solid rgba(0,0,0,0.08)',
 									borderRadius: '8px',
-									fontSize: '20px',
+									fontSize: '18px',
 									fontWeight: '500',
 								}}
 							>
-								{value}
+								{principle.title}
 							</div>
 						))}
 					</div>
 				</div>
 
-				{/* Terminal footer */}
 				<div
 					style={{
 						display: 'flex',
@@ -169,14 +163,13 @@ export default async function Image() {
 						backgroundColor: '#1a1a1a',
 						alignItems: 'center',
 						paddingLeft: '20px',
-						color: '#27c93f',
 						fontSize: '14px',
 						fontFamily: 'monospace',
 					}}
 				>
 					<span style={{ color: '#27c93f' }}>$</span>
-					<span style={{ marginLeft: '10px', color: '#fafafa' }}>
-						Solving complex business problems through thoughtful system design
+					<span style={{ marginLeft: '10px', color: '#ededed' }}>
+						devfresher.me
 					</span>
 				</div>
 			</div>

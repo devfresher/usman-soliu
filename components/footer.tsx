@@ -1,43 +1,24 @@
-import Link from 'next/link';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { socialLinks } from '@/lib/data/site';
 
 export default function Footer() {
 	return (
-		<footer className="border-t border-gray-200/60 bg-background">
-			<div className="mx-auto w-full px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-				<div className="mx-auto max-w-6xl">
-					<div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-						<p className="text-sm text-muted">
-							© {new Date().getFullYear()} Usman Soliu. All rights reserved.
-						</p>
-						<div className="flex items-center gap-8">
-							<a
-								href="https://github.com/devfresher"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="text-muted transition-colors hover:text-foreground"
-								aria-label="GitHub"
-							>
-								<Github size={20} />
-							</a>
-							<a
-								href="https://linkedin.com/in/devfresher"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="text-muted transition-colors hover:text-foreground"
-								aria-label="LinkedIn"
-							>
-								<Linkedin size={20} />
-							</a>
-							<a
-								href="mailto:hello@devfresher.me"
-								className="text-muted transition-colors hover:text-foreground"
-								aria-label="Email"
-							>
-								<Mail size={20} />
-							</a>
-						</div>
-					</div>
+		<footer className="border-t border-border">
+			<div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-4 py-10 sm:flex-row sm:px-6 lg:px-8">
+				<p className="font-mono text-xs text-muted">
+					© {new Date().getFullYear()} Usman Soliu
+				</p>
+				<div className="flex items-center gap-6">
+					{socialLinks.map((link) => (
+						<a
+							key={link.label}
+							href={link.href}
+							target={link.href.startsWith('http') ? '_blank' : undefined}
+							rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+							className="text-xs text-muted transition-colors hover:text-foreground"
+						>
+							{link.label}
+						</a>
+					))}
 				</div>
 			</div>
 		</footer>
