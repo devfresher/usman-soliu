@@ -1,16 +1,23 @@
 services:
-    - type: web
-      name: usman-soliu-portfolio
-      env: node
-      plan: starter
-      buildCommand: pnpm install && pnpm build
-      startCommand: pnpm start
-      envVars:
-          - key: NODE_ENV
-            value: production
-          - key: RESEND_API_KEY
-            sync: false
-          - key: RESEND_FROM_EMAIL
-            sync: false
-          - key: CONTACT_EMAIL
-            sync: false
+  - type: web
+    name: usman-soliu-portfolio
+    runtime: node
+    plan: starter
+    buildCommand: corepack enable && pnpm install && pnpm build
+    startCommand: pnpm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: RESEND_API_KEY
+        sync: false
+      - key: RESEND_FROM_EMAIL
+        sync: false
+      - key: CONTACT_EMAIL
+        sync: false
+      - key: HASHNODE_API_TOKEN
+        sync: false
+      - key: NEXT_PUBLIC_GA_MEASUREMENT_ID
+        sync: false
+      - key: NEXT_PUBLIC_PLAUSIBLE_DOMAIN
+        sync: false

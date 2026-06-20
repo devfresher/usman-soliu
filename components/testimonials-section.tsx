@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { SectionLabel } from '@/components/section-label';
 import { TestimonialCard } from '@/components/testimonial-card';
+import { testimonialsIntro } from '@/lib/data/site';
 import type { Testimonial } from '@/lib/data/testimonials';
 
 interface TestimonialsSectionProps {
@@ -15,7 +16,7 @@ interface TestimonialsSectionProps {
 export function TestimonialsSection({
 	testimonials,
 	title = 'What people say',
-	description = 'Feedback from colleagues, clients, and readers of my technical writing.',
+	description = testimonialsIntro,
 	showViewAll = false,
 	className,
 }: TestimonialsSectionProps) {

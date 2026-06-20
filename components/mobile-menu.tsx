@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Terminal } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { OpenToWorkBadge } from '@/components/open-to-work-badge';
 import { navItems } from '@/lib/data/site';
 
 export default function MobileMenu() {
@@ -34,6 +35,9 @@ export default function MobileMenu() {
 						<div className="flex items-center gap-2 border-b border-border px-4 py-2.5">
 							<Terminal className="h-3.5 w-3.5 text-accent" />
 							<span className="font-mono text-xs text-muted">navigation.ts</span>
+						</div>
+						<div className="border-b border-border p-3">
+							<OpenToWorkBadge className="w-full justify-center" />
 						</div>
 						<nav className="flex flex-col gap-0.5 p-2">
 							{navItems.map((item) => {

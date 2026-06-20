@@ -1,7 +1,24 @@
+import { Suspense } from 'react';
 import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
-import { CaseStudyCard } from '@/components/case-study-card';
+import { CaseStudiesExplorer } from '@/components/case-studies-explorer';
 import { caseStudies } from '@/lib/data/case-studies';
+
+function ExplorerFallback() {
+	return (
+		<div className="space-y-8">
+			<div className="h-[9.5rem] animate-pulse rounded-lg border border-border bg-surface" />
+			<div className="grid gap-4">
+				{caseStudies.map((study) => (
+					<div
+						key={study.slug}
+						className="h-48 animate-pulse rounded-lg border border-border bg-surface"
+					/>
+				))}
+			</div>
+		</div>
+	);
+}
 
 export default function Projects() {
 	return (
@@ -12,11 +29,9 @@ export default function Projects() {
 				description="Problems I have worked on — what broke, what we built, and what I would do differently."
 			/>
 
-			<div className="grid gap-4">
-				{caseStudies.map((study) => (
-					<CaseStudyCard key={study.slug} study={study} />
-				))}
-			</div>
+			<Suspense fallback={<ExplorerFallback />}>
+				<CaseStudiesExplorer studies={caseStudies} />
+			</Suspense>
 		</PageContainer>
 	);
 }

@@ -88,13 +88,15 @@ export default async function CaseStudyPage({ params }: PageProps) {
 						))}
 					</div>
 					<div className="flex flex-wrap gap-3 pt-2">
-						<Button href={study.url} target="_blank" variant="secondary">
-							Visit site
-							<ArrowUpRight className="ml-2 h-4 w-4" />
-						</Button>
+						{study.url && (
+							<Button href={study.url} target="_blank" variant="secondary">
+								Visit site
+								<ArrowUpRight className="ml-2 h-4 w-4" />
+							</Button>
+						)}
 						{study.appUrl && (
 							<Button href={study.appUrl} target="_blank" variant="ghost">
-								App
+								{study.url ? 'App' : 'API'}
 								<ArrowUpRight className="ml-2 h-4 w-4" />
 							</Button>
 						)}
