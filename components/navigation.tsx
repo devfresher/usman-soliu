@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Terminal } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { navItems } from '@/lib/data/site';
+import { OpenToWorkBadge } from '@/components/open-to-work-badge';
 import { ThemeToggle } from '@/components/theme-toggle';
 import MobileMenu from '@/components/mobile-menu';
 
@@ -81,6 +82,7 @@ export default function Navigation() {
 							/>
 						);
 					})}
+					<OpenToWorkBadge variant="compact" className="ml-1 hidden lg:inline-flex" />
 					<ThemeToggle className="ml-1.5" />
 				</div>
 

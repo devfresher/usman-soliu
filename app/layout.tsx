@@ -5,7 +5,9 @@ import './globals.css';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import { ThemeProvider } from '@/components/theme-provider';
+import { SiteAnalytics } from '@/components/site-analytics';
 import { siteConfig } from '@/lib/data/site';
+import { getPersonJsonLd, getWebsiteJsonLd } from '@/lib/structured-data';
 
 export const metadata: Metadata = {
 	metadataBase: new URL(siteConfig.url),
@@ -55,6 +57,9 @@ export const metadata: Metadata = {
 export default function RootLayout({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
+	const personJsonLd = getPersonJsonLd();
+	const websiteJsonLd = getWebsiteJsonLd();
+
 	return (
 		<html
 			lang="en"
@@ -62,6 +67,15 @@ export default function RootLayout({
 			suppressHydrationWarning
 		>
 			<body className={`${GeistSans.className} min-h-screen bg-background text-foreground antialiased`}>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+				/>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+				/>
+				<SiteAnalytics />
 				<ThemeProvider>
 					<Navigation />
 					<main>{children}</main>

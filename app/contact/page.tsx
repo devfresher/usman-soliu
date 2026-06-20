@@ -6,6 +6,7 @@ import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
 import { Card } from '@/components/card';
 import Button from '@/components/button';
+import { OpenToWorkBadge } from '@/components/open-to-work-badge';
 import ResumeViewer from '@/components/resume-viewer';
 import { contactIntro, openToRoles, socialLinks, siteConfig } from '@/lib/data/site';
 
@@ -18,6 +19,7 @@ export default function Contact() {
 		email: '',
 		subject: '',
 		message: '',
+		website: '',
 	});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -37,7 +39,9 @@ export default function Contact() {
 
 			if (response.ok) {
 				setSubmitStatus('success');
-				setFormData({ name: '', email: '', subject: '', message: '' });
+				setFormData({ name: '', email: '', subject: '', message: '', website: '' });
+			} else if (response.status === 429) {
+				setSubmitStatus('error');
 			} else {
 				setSubmitStatus('error');
 			}
@@ -50,16 +54,32 @@ export default function Contact() {
 
 	return (
 		<PageContainer className="space-y-12">
-			<PageHeader
-				label="Contact"
-				title="Let's talk"
-				description={contactIntro}
-			/>
+			<div className="space-y-4">
+				<OpenToWorkBadge />
+				<PageHeader
+					label="Contact"
+					title="Let's talk"
+					description={contactIntro}
+				/>
+			</div>
 
 			<div className="grid gap-12 lg:grid-cols-5">
 				<div className="space-y-8 lg:col-span-3">
 					<Card>
-						<form onSubmit={handleSubmit} className="space-y-5">
+						<form onSubmit={handleSubmit} className="relative space-y-5">
+							<div className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden>
+								<label htmlFor="website">Website</label>
+								<input
+									type="text"
+									id="website"
+									name="website"
+									tabIndex={-1}
+									autoComplete="off"
+									value={formData.website}
+									onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+								/>
+							</div>
+
 							<div className="space-y-2">
 								<label htmlFor="name" className="text-sm font-medium text-foreground">
 									Name
@@ -135,6 +155,11 @@ export default function Contact() {
 									Something went wrong. Email me at {siteConfig.email} directly.
 								</p>
 							)}
+
+							<p className="text-xs leading-relaxed text-muted">
+								Your message is sent by email only — not stored on this site. I use it
+								solely to reply to you.
+							</p>
 						</form>
 					</Card>
 				</div>

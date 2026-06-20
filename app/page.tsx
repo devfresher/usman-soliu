@@ -12,7 +12,8 @@ import { TechAccent } from '@/components/tech-accent';
 import { getFeaturedCaseStudies } from '@/lib/data/case-studies';
 import { getHashnodePosts } from '@/lib/hashnode';
 import { getFeaturedTestimonials } from '@/lib/data/testimonials';
-import { principles, siteConfig } from '@/lib/data/site';
+import { homeOpenToText, homeHeroText, principles, siteConfig, testimonialsIntro } from '@/lib/data/site';
+import { OpenToWorkBadge } from '@/components/open-to-work-badge';
 import HomeActions from '@/components/home-actions';
 import { TestimonialsSection } from '@/components/testimonials-section';
 
@@ -36,14 +37,15 @@ export default async function Home() {
 				<PageContainer className="relative flex min-h-[calc(100vh-3.5rem)] flex-col justify-center py-20 sm:py-28">
 					<div className="mx-auto grid max-w-4xl items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-16">
 						<div className="space-y-8 text-center lg:text-left">
-							<SectionLabel>{siteConfig.title}</SectionLabel>
+							<div className="flex flex-col items-center gap-3 lg:items-start">
+								<SectionLabel>{siteConfig.title}</SectionLabel>
+								<OpenToWorkBadge />
+							</div>
 							<h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl">
 								Usman Soliu
 							</h1>
 							<p className="mx-auto max-w-xl text-balance text-base leading-relaxed text-muted sm:text-lg lg:mx-0">
-								I build backend systems for products that need to scale without falling
-								apart — APIs, data pipelines, and the infrastructure behind payments,
-								HR, and mobility platforms.
+								{homeHeroText}
 							</p>
 							<HomeActions />
 						</div>
@@ -131,7 +133,7 @@ export default async function Home() {
 					<TestimonialsSection
 						testimonials={featuredTestimonials}
 						title="What people say"
-						description="Feedback from people I have worked with."
+						description={testimonialsIntro}
 						showViewAll
 					/>
 				</PageContainer>
@@ -165,10 +167,11 @@ export default async function Home() {
 			<PageContainer className="border-t border-border py-16">
 				<Card className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
 					<div className="space-y-2">
-						<p className="font-mono text-xs text-muted">Open to conversation</p>
-						<p className="text-base text-foreground">
-							Senior backend roles, technical leadership, and engineering management.
-						</p>
+						<div className="flex flex-wrap items-center gap-3">
+							<p className="font-mono text-xs text-muted">Open to conversation</p>
+							<OpenToWorkBadge variant="compact" />
+						</div>
+						<p className="text-base text-foreground">{homeOpenToText}</p>
 					</div>
 					<Button href="/contact">
 						Get in touch

@@ -7,7 +7,9 @@ import { TestimonialCard } from '@/components/testimonial-card';
 import { SectionLabel } from '@/components/section-label';
 import TechStack from '@/components/tech-stack';
 import Button from '@/components/button';
-import { principles } from '@/lib/data/site';
+import { ExperienceTimeline } from '@/components/experience-timeline';
+import { principles, aboutIntroText, currentlyRoles, siteConfig } from '@/lib/data/site';
+import { experienceTimeline } from '@/lib/data/experience';
 import {
 	getCommunityTestimonials,
 	getTestimonialsByContext,
@@ -45,18 +47,18 @@ export default function About() {
 					/>
 
 					<div className="space-y-4 text-base leading-relaxed text-muted">
-						<p>
-							I have led and contributed to backend systems across fintech, HR,
-							mobility, and recruitment — usually from early architecture through
-							production. I care about whether the system holds up six months after
-							launch, not just whether it ships on Friday.
-						</p>
+						<p>{aboutIntroText}</p>
 						<p>
 							When I lead, I stay hands-on. I would rather review a schema change
 							than delegate it blindly. When I build, I think about the product
 							constraint behind the ticket — who is blocked if this API is slow or
 							wrong?
 						</p>
+					</div>
+
+					<div className="space-y-4">
+						<h2 className="text-lg font-semibold text-foreground">Experience</h2>
+						<ExperienceTimeline entries={experienceTimeline} />
 					</div>
 
 					<div className="space-y-6">
@@ -97,9 +99,9 @@ export default function About() {
 						<Card>
 							<p className="mb-1 font-mono text-xs text-muted">Currently</p>
 							<p className="text-sm text-foreground">
-								Building and scaling backend systems at HCMatrix. Writing on{' '}
+								{currentlyRoles}. Writing on{' '}
 								<a
-									href="https://code-along.hashnode.dev"
+									href={siteConfig.hashnodeUrl}
 									target="_blank"
 									rel="noopener noreferrer"
 									className="text-accent hover:underline"
