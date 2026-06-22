@@ -13,11 +13,30 @@ function useMounted() {
 	);
 }
 
-export function ThemeToggle({ className }: { className?: string }) {
+export function ThemeToggle({
+	className,
+	variant = 'icon',
+}: {
+	className?: string;
+	variant?: 'icon' | 'compact';
+}) {
 	const { theme, setTheme, resolvedTheme } = useTheme();
 	const mounted = useMounted();
 
 	if (!mounted) {
+		if (variant === 'compact') {
+			return (
+				<div className={cn('flex gap-1', className)}>
+					{(['system', 'light', 'dark'] as const).map((mode) => (
+						<div
+							key={mode}
+							className="h-7 w-7 rounded-md border border-border bg-surface"
+						/>
+					))}
+				</div>
+			);
+		}
+
 		return (
 			<button
 				type="button"
@@ -27,6 +46,36 @@ export function ThemeToggle({ className }: { className?: string }) {
 				)}
 				aria-label="Toggle theme"
 			/>
+		);
+	}
+
+	if (variant === 'compact') {
+		const modes = [
+			{ id: 'system' as const, label: 'System', Icon: Monitor },
+			{ id: 'light' as const, label: 'Light', Icon: Sun },
+			{ id: 'dark' as const, label: 'Dark', Icon: Moon },
+		];
+
+		return (
+			<div className={cn('inline-flex items-center gap-0.5 rounded-md border border-border bg-surface p-0.5', className)}>
+				{modes.map(({ id, label, Icon }) => (
+					<button
+						key={id}
+						type="button"
+						onClick={() => setTheme(id)}
+						className={cn(
+							'inline-flex h-7 w-7 items-center justify-center rounded-[4px] transition-colors',
+							theme === id
+								? 'bg-surface-hover text-foreground'
+								: 'text-muted hover:text-foreground'
+						)}
+						aria-label={`${label} theme`}
+						title={`${label} theme`}
+					>
+						<Icon className="h-3.5 w-3.5" />
+					</button>
+				))}
+			</div>
 		);
 	}
 

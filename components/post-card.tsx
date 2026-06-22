@@ -34,8 +34,23 @@ export function PostCard({ post }: PostCardProps) {
 					<h3 className="text-base font-semibold text-foreground group-hover:text-accent transition-colors">
 						{post.title}
 					</h3>
+					{post.subtitle && (
+						<p className="text-sm font-medium text-muted">{post.subtitle}</p>
+					)}
 					{post.brief && (
 						<p className="text-sm text-muted line-clamp-2">{post.brief}</p>
+					)}
+					{post.tags.length > 0 && (
+						<div className="flex flex-wrap gap-2">
+							{post.tags.map((tag) => (
+								<span
+									key={tag}
+									className="rounded-md bg-accent-muted px-2 py-0.5 font-mono text-[11px] text-accent"
+								>
+									{tag}
+								</span>
+							))}
+						</div>
 					)}
 					<span className="flex items-center gap-1 text-xs font-medium text-muted group-hover:text-foreground transition-colors">
 						Read on Hashnode

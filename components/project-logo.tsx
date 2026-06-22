@@ -1,8 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useTheme } from 'next-themes';
-import { useSyncExternalStore } from 'react';
 import { cn } from '@/lib/utils';
 
 interface ProjectLogoProps {
@@ -10,40 +8,26 @@ interface ProjectLogoProps {
 	logo?: string;
 	logoLight?: string;
 	logoDark?: string;
-	logoInlineWordmark?: boolean;
-	logoFullLockup?: boolean;
+	/** plain = logo on card surface; tile = dark badge (legacy contrast fallback) */
+	appearance?: 'plain' | 'tile';
 	size?: 'sm' | 'md' | 'lg';
 	className?: string;
 }
 
-const inlineWordmarkStyles = {
-	sm: { box: 'h-9 gap-2 px-2.5', icon: 'h-6 w-6', text: 'text-sm font-semibold' },
-	md: { box: 'h-11 gap-2.5 px-3', icon: 'h-8 w-8', text: 'text-base font-semibold' },
-	lg: { box: 'h-14 gap-3 px-3.5', icon: 'h-10 w-10', text: 'text-lg font-semibold' },
+const plainLogoStyles = {
+	sm: 'max-h-8 max-w-[6.5rem]',
+	md: 'max-h-10 max-w-[8rem]',
+	lg: 'max-h-12 max-w-[10rem]',
 } as const;
 
-const wideSizeStyles = {
+const tileLogoStyles = {
 	sm: { box: 'h-9 px-3', img: 'max-h-5 max-w-[5.5rem]' },
 	md: { box: 'h-11 px-4', img: 'max-h-6 max-w-[6.5rem]' },
 	lg: { box: 'h-14 px-5', img: 'max-h-8 max-w-[8.5rem]' },
 } as const;
 
-const fullLockupStyles = {
-	sm: { box: 'h-10 px-2.5', img: 'max-h-7 max-w-[5.5rem]' },
-	md: { box: 'h-12 px-3', img: 'max-h-9 max-w-[6.5rem]' },
-	lg: { box: 'h-14 px-3.5', img: 'max-h-11 max-w-[8rem]' },
-} as const;
-
 const logoTileClass =
 	'rounded-md border border-border bg-logo-tile transition-colors duration-200';
-
-function useMounted() {
-	return useSyncExternalStore(
-		() => () => {},
-		() => true,
-		() => false
-	);
-}
 
 function initials(name: string) {
 	return name
@@ -54,15 +38,38 @@ function initials(name: string) {
 		.toUpperCase();
 }
 
-function resolveLogoSrc(
-	theme: string | undefined,
-	logo?: string,
-	logoLight?: string,
-	logoDark?: string
-) {
-	if (theme === 'light' && logoLight) return logoLight;
-	if (theme === 'dark' && logoDark) return logoDark;
-	return logoDark ?? logoLight ?? logo;
+function hasThemeVariants(logoLight?: string, logoDark?: string) {
+	return Boolean(logoLight && logoDark && logoLight !== logoDark);
+}
+
+function LogoImage({
+	src,
+	name,
+	size,
+	className,
+	appearance,
+}: {
+	src: string;
+	name: string;
+	size: 'sm' | 'md' | 'lg';
+	className?: string;
+	appearance: 'plain' | 'tile';
+}) {
+	const imgClass =
+		appearance === 'plain'
+			? cn('h-auto w-auto object-contain', plainLogoStyles[size], className)
+			: cn('h-auto w-auto object-contain', tileLogoStyles[size].img, className);
+
+	return (
+		<Image
+			src={src}
+			alt={`${name} logo`}
+			width={160}
+			height={48}
+			unoptimized
+			className={imgClass}
+		/>
+	);
 }
 
 export function ProjectLogo({
@@ -70,45 +77,86 @@ export function ProjectLogo({
 	logo,
 	logoLight,
 	logoDark,
-	logoInlineWordmark = false,
-	logoFullLockup = false,
+	appearance = 'plain',
 	size = 'md',
 	className,
 }: ProjectLogoProps) {
-	const { resolvedTheme } = useTheme();
-	const mounted = useMounted();
+	if (hasThemeVariants(logoLight, logoDark)) {
+		if (appearance === 'plain') {
+			return (
+				<div className={cn('inline-flex shrink-0 items-center', className)}>
+					<LogoImage
+						src={logoLight!}
+						name={name}
+						size={size}
+						appearance={appearance}
+						className="dark:hidden"
+					/>
+					<LogoImage
+						src={logoDark!}
+						name={name}
+						size={size}
+						appearance={appearance}
+						className="hidden dark:block"
+					/>
+				</div>
+			);
+		}
 
-	const src = mounted
-		? resolveLogoSrc(resolvedTheme, logo, logoLight, logoDark)
-		: logoDark ?? logo ?? logoLight;
-
-	if (logoInlineWordmark && src) {
-		const styles = inlineWordmarkStyles[size];
+		const tile = tileLogoStyles[size];
 		return (
-			<div
-				className={cn(
-					'inline-flex shrink-0 items-center',
-					logoTileClass,
-					styles.box,
-					className
-				)}
-			>
-				<Image
-					src={src}
-					alt=""
-					width={40}
-					height={40}
-					className={cn('shrink-0 object-contain', styles.icon)}
-					aria-hidden
-				/>
-				<span className={cn('tracking-tight text-logo-tile-foreground', styles.text)}>
-					{name}
-				</span>
+			<div className={cn('inline-flex shrink-0 items-center', className)}>
+				<div
+					className={cn(
+						'inline-flex items-center justify-center dark:hidden',
+						logoTileClass,
+						tile.box
+					)}
+				>
+					<LogoImage
+						src={logoLight!}
+						name={name}
+						size={size}
+						appearance={appearance}
+					/>
+				</div>
+				<div
+					className={cn(
+						'hidden items-center justify-center dark:inline-flex',
+						logoTileClass,
+						tile.box
+					)}
+				>
+					<LogoImage src={logoDark!} name={name} size={size} appearance={appearance} />
+				</div>
 			</div>
 		);
 	}
 
-	const tile = logoFullLockup ? fullLockupStyles[size] : wideSizeStyles[size];
+	const src = logo ?? logoLight ?? logoDark;
+
+	if (!src) {
+		return (
+			<span
+				className={cn(
+					'inline-flex shrink-0 font-mono text-sm font-medium text-muted',
+					className
+				)}
+			>
+				{initials(name)}
+			</span>
+		);
+	}
+
+	if (appearance === 'plain') {
+		return (
+			<div className={cn('inline-flex shrink-0 items-center', className)}>
+				<LogoImage src={src} name={name} size={size} appearance={appearance} />
+			</div>
+		);
+	}
+
+	const tile = tileLogoStyles[size];
 
 	return (
 		<div
@@ -119,19 +167,7 @@ export function ProjectLogo({
 				className
 			)}
 		>
-			{src ? (
-				<Image
-					src={src}
-					alt={`${name} logo`}
-					width={160}
-					height={48}
-					className={cn('h-auto w-auto object-contain', tile.img)}
-				/>
-			) : (
-				<span className="font-mono text-xs font-medium text-logo-tile-foreground/70">
-					{initials(name)}
-				</span>
-			)}
+			<LogoImage src={src} name={name} size={size} appearance={appearance} />
 		</div>
 	);
 }

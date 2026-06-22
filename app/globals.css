@@ -93,3 +93,24 @@
     text-wrap: balance;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes timeline-line {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  .animate-timeline-line {
+    animation: timeline-line 0.5s ease-out forwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

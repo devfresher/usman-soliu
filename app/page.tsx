@@ -1,13 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight, Search, Layers, ShieldCheck } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import Button from '@/components/button';
 import { PageContainer } from '@/components/page-container';
 import { SectionLabel } from '@/components/section-label';
-import { CaseStudyCard } from '@/components/case-study-card';
-import { PostCard } from '@/components/post-card';
 import { Card } from '@/components/card';
+import {
+	FeaturedStudiesGrid,
+	PrinciplesGrid,
+	RecentPostsGrid,
+} from '@/components/home-animated-sections';
+import { Reveal, RevealOnMount } from '@/components/motion/reveal';
 import { TechAccent } from '@/components/tech-accent';
 import { getFeaturedCaseStudies } from '@/lib/data/case-studies';
 import { getHashnodePosts } from '@/lib/hashnode';
@@ -16,12 +19,6 @@ import { homeOpenToText, homeHeroText, principles, siteConfig, testimonialsIntro
 import { OpenToWorkBadge } from '@/components/open-to-work-badge';
 import HomeActions from '@/components/home-actions';
 import { TestimonialsSection } from '@/components/testimonials-section';
-
-const principleIcons: Record<string, LucideIcon> = {
-	'Understand first': Search,
-	'Design for change': Layers,
-	'Own the outcome': ShieldCheck,
-};
 
 export default async function Home() {
 	const [featuredStudies, posts] = await Promise.all([
@@ -36,7 +33,7 @@ export default async function Home() {
 				<TechAccent />
 				<PageContainer className="relative flex min-h-[calc(100vh-3.5rem)] flex-col justify-center py-20 sm:py-28">
 					<div className="mx-auto grid max-w-4xl items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-16">
-						<div className="space-y-8 text-center lg:text-left">
+						<RevealOnMount className="space-y-8 text-center lg:text-left">
 							<div className="flex flex-col items-center gap-3 lg:items-start">
 								<SectionLabel>{siteConfig.title}</SectionLabel>
 								<OpenToWorkBadge />
@@ -48,19 +45,20 @@ export default async function Home() {
 								{homeHeroText}
 							</p>
 							<HomeActions />
-						</div>
+						</RevealOnMount>
 
-						{/* Tech illustration — hidden on small screens */}
-						<div className="relative mx-auto hidden h-48 w-48 shrink-0 overflow-hidden rounded-2xl border border-border bg-surface shadow-sm lg:block xl:h-56 xl:w-56">
-							<Image
-								src="/avatar-illustration.png"
-								alt=""
-								fill
-								className="object-cover"
-								sizes="224px"
-								aria-hidden
-							/>
-						</div>
+						<RevealOnMount delay={0.12} className="relative mx-auto hidden lg:block">
+							<div className="relative h-48 w-48 shrink-0 overflow-hidden rounded-2xl border border-border bg-surface shadow-sm xl:h-56 xl:w-56">
+								<Image
+									src="/avatar-illustration.png"
+									alt=""
+									fill
+									className="object-cover"
+									sizes="224px"
+									aria-hidden
+								/>
+							</div>
+						</RevealOnMount>
 					</div>
 				</PageContainer>
 			</div>
@@ -81,11 +79,7 @@ export default async function Home() {
 						<ArrowRight className="h-4 w-4" />
 					</Link>
 				</div>
-				<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{featuredStudies.map((study) => (
-						<CaseStudyCard key={study.slug} study={study} variant="compact" />
-					))}
-				</div>
+				<FeaturedStudiesGrid studies={featuredStudies} />
 				<Link
 					href="/projects"
 					className="flex items-center justify-center gap-1 text-sm text-muted transition-colors hover:text-foreground sm:hidden"
@@ -102,24 +96,7 @@ export default async function Home() {
 						Three principles
 					</h2>
 				</div>
-				<div className="grid gap-4 sm:grid-cols-3">
-					{principles.map((principle) => {
-						const Icon = principleIcons[principle.title];
-						return (
-							<Card key={principle.title}>
-								{Icon && (
-									<div className="mb-3 flex h-8 w-8 items-center justify-center rounded-md border border-border bg-surface-hover text-accent">
-										<Icon className="h-4 w-4" strokeWidth={1.75} />
-									</div>
-								)}
-								<h3 className="mb-2 text-base font-semibold text-foreground">
-									{principle.title}
-								</h3>
-								<p className="text-sm leading-relaxed text-muted">{principle.description}</p>
-							</Card>
-						);
-					})}
-				</div>
+				<PrinciplesGrid principles={principles} />
 				<div>
 					<Button href="/about" variant="secondary">
 						How I work
@@ -156,16 +133,13 @@ export default async function Home() {
 							<ArrowRight className="h-4 w-4" />
 						</Link>
 					</div>
-					<div className="grid gap-4 sm:grid-cols-2">
-						{posts.map((post) => (
-							<PostCard key={post.slug} post={post} />
-						))}
-					</div>
+					<RecentPostsGrid posts={posts} />
 				</PageContainer>
 			)}
 
 			<PageContainer className="border-t border-border py-16">
-				<Card className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+				<Reveal>
+					<Card className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
 					<div className="space-y-2">
 						<div className="flex flex-wrap items-center gap-3">
 							<p className="font-mono text-xs text-muted">Open to conversation</p>
@@ -177,7 +151,8 @@ export default async function Home() {
 						Get in touch
 						<ArrowUpRight className="ml-2 h-4 w-4" />
 					</Button>
-				</Card>
+					</Card>
+				</Reveal>
 			</PageContainer>
 		</>
 	);

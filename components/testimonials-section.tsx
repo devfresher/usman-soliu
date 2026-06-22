@@ -1,7 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { SectionLabel } from '@/components/section-label';
-import { TestimonialCard } from '@/components/testimonial-card';
+import { TestimonialGrid } from '@/components/home-animated-sections';
 import { testimonialsIntro } from '@/lib/data/site';
 import type { Testimonial } from '@/lib/data/testimonials';
 
@@ -45,11 +47,7 @@ export function TestimonialsSection({
 				)}
 			</div>
 
-			<div className="grid gap-4 sm:grid-cols-2">
-				{testimonials.map((testimonial) => (
-					<TestimonialCard key={testimonial.id} testimonial={testimonial} />
-				))}
-			</div>
+			<TestimonialGrid testimonials={testimonials} />
 		</section>
 	);
 }
