@@ -1,3 +1,8 @@
+import {
+	canonicalizeHashnodeSlug,
+	hashnodePublication,
+	resolveHashnodePostUrl,
+} from '@/lib/data/hashnode-publication';
 import { siteConfig } from '@/lib/data/site';
 import { writingPosts, type WritingPost } from '@/lib/data/writing-posts';
 
@@ -12,12 +17,17 @@ const POSTS_QUERY = `
         edges {
           node {
             title
+            subtitle
             slug
             brief
+            url
             publishedAt
             readTimeInMinutes
             coverImage {
               url
+            }
+            tags {
+              name
             }
           }
         }
@@ -33,11 +43,14 @@ interface HashnodeResponse {
 				edges?: Array<{
 					node: {
 						title: string;
+						subtitle?: string | null;
 						slug: string;
 						brief: string;
+						url?: string | null;
 						publishedAt: string;
 						readTimeInMinutes: number;
 						coverImage?: { url: string } | null;
+						tags?: Array<{ name: string }> | null;
 					};
 				}>;
 			};
@@ -48,15 +61,21 @@ interface HashnodeResponse {
 function mapApiPosts(json: HashnodeResponse): HashnodePost[] {
 	const edges = json.data?.publication?.posts?.edges ?? [];
 
-	return edges.map(({ node }) => ({
-		title: node.title,
-		slug: node.slug,
-		brief: node.brief,
-		publishedAt: node.publishedAt,
-		readTimeInMinutes: node.readTimeInMinutes,
-		coverImage: node.coverImage?.url,
-		url: `${siteConfig.hashnodeUrl}/${node.slug}`,
-	}));
+	return edges.map(({ node }) => {
+		const slug = canonicalizeHashnodeSlug(node.slug);
+
+		return {
+			title: node.title,
+			subtitle: node.subtitle?.trim() || undefined,
+			slug,
+			brief: node.brief,
+			publishedAt: node.publishedAt,
+			readTimeInMinutes: node.readTimeInMinutes,
+			coverImage: node.coverImage?.url,
+			tags: node.tags?.map((tag) => tag.name).filter(Boolean) ?? [],
+			url: node.url?.trim() || resolveHashnodePostUrl(slug),
+		};
+	});
 }
 
 async function fetchFromHashnodeApi(limit: number): Promise<HashnodePost[]> {
@@ -95,4 +114,9 @@ export async function getHashnodePosts(limit = 12): Promise<HashnodePost[]> {
 	}
 
 	return writingPosts.slice(0, limit);
+}
+
+/** Canonical blog URL — prefer publication metadata when set. */
+export function getHashnodeBlogUrl(): string {
+	return hashnodePublication.canonicalURL || siteConfig.hashnodeUrl;
 }

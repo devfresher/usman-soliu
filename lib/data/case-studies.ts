@@ -17,14 +17,10 @@ export interface CaseStudy {
 	appUrl?: string;
 	/** Single logo, or fallback when light/dark not set */
 	logo?: string;
-	/** Light site theme — e.g. white wordmark on dark tile */
+	/** Light site theme — wordmark/icon for light backgrounds */
 	logoLight?: string;
-	/** Dark site theme — e.g. coloured wordmark on dark tile */
+	/** Dark site theme — wordmark/icon for dark backgrounds */
 	logoDark?: string;
-	/** Icon + name together on one dark tile (Zaakiyah) */
-	logoInlineWordmark?: boolean;
-	/** Full logo image includes wordmark — hide duplicate title (Talentcona) */
-	logoFullLockup?: boolean;
 	featured: boolean;
 	/** Primary industry bucket for project list filters */
 	sector: CaseStudySector;
@@ -49,7 +45,6 @@ export const caseStudies: CaseStudy[] = [
 		url: 'https://zaakiyah.com',
 		appUrl: 'https://app.zaakiyah.com',
 		logo: '/projects/zaakiyah.png',
-		logoInlineWordmark: true,
 		featured: true,
 		sector: 'fintech',
 		tags: ['Payments', 'Microservices', 'AI'],
@@ -161,7 +156,7 @@ export const caseStudies: CaseStudy[] = [
 		role: 'Backend Engineer',
 		status: 'Live',
 		url: 'https://haqqpay.com',
-		logoDark: '/projects/haqqpay.png',
+		logoDark: '/projects/haqqpay-dark.png',
 		logoLight: '/projects/haqqpay-light.png',
 		featured: true,
 		sector: 'fintech',
@@ -214,7 +209,6 @@ export const caseStudies: CaseStudy[] = [
 		url: 'https://www.jekaeat.io',
 		appUrl: 'https://api.jekaeat.io',
 		logo: '/projects/jekaeat.png',
-		logoFullLockup: true,
 		featured: true,
 		sector: 'food',
 		tags: ['Food delivery', 'Payments', 'Logistics'],
@@ -268,8 +262,8 @@ export const caseStudies: CaseStudy[] = [
 		role: 'Backend Engineer',
 		status: 'In Progress',
 		url: 'https://togomobility.com',
-		logoDark: '/projects/togo-mobility.png',
-		logoLight: '/projects/togo-mobility-light.png',
+		logoLight: '/projects/togo-mobility.png',
+		logoDark: '/projects/togo-mobility-light.png',
 		featured: false,
 		sector: 'mobility',
 		tags: ['Mobility', 'APIs', 'NestJS'],
@@ -300,8 +294,7 @@ export const caseStudies: CaseStudy[] = [
 		role: 'Backend Engineer',
 		status: 'In Progress',
 		url: 'https://talentcona.netlify.app',
-		logoDark: '/projects/talentcona.png',
-		logoFullLockup: true,
+		logo: '/projects/talentcona.png',
 		featured: false,
 		sector: 'edtech',
 		tags: ['EdTech', 'Payments', 'Mentorship'],
@@ -349,6 +342,8 @@ export const caseStudies: CaseStudy[] = [
 		domain: 'Productivity · SaaS',
 		role: 'Founder & Builder',
 		status: 'In Progress',
+		logoDark: '/projects/subi-dark.png',
+		logoLight: '/projects/subi-light.png',
 		featured: false,
 		sector: 'productivity',
 		tags: ['SaaS', 'Supabase', 'Next.js'],

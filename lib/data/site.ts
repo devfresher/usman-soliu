@@ -27,14 +27,28 @@ export const openToWork = {
 	shortLabel: 'Open to work',
 } as const;
 
-export const navItems = [
+export type NavItem = {
+	href: string;
+	label: string;
+	symbol: string;
+};
+
+/** Primary destinations — always visible in the nav bar */
+export const primaryNavItems: NavItem[] = [
 	{ href: '/', label: 'Home', symbol: '~' },
-	{ href: '/about', label: 'How I Work', symbol: '//' },
 	{ href: '/projects', label: 'Case Studies', symbol: '{}' },
 	{ href: '/writing', label: 'Insights', symbol: '<>' },
-	{ href: '/mentorship', label: 'Mentorship', symbol: '()' },
 	{ href: '/contact', label: 'Contact', symbol: '[]' },
-] as const;
+];
+
+/** Secondary pages — grouped in the More menu */
+export const secondaryNavItems: NavItem[] = [
+	{ href: '/about', label: 'How I Work', symbol: '//' },
+	{ href: '/mentorship', label: 'Mentorship', symbol: '()' },
+];
+
+/** All routes — used by mobile menu */
+export const navItems: NavItem[] = [...primaryNavItems, ...secondaryNavItems];
 
 export const socialLinks = [
 	{

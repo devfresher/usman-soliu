@@ -3,7 +3,7 @@ import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
 import { Card } from '@/components/card';
 import { FlipProfileCard } from '@/components/flip-profile-card';
-import { TestimonialCard } from '@/components/testimonial-card';
+import { PrinciplesList, TestimonialGrid } from '@/components/home-animated-sections';
 import { SectionLabel } from '@/components/section-label';
 import TechStack from '@/components/tech-stack';
 import Button from '@/components/button';
@@ -63,16 +63,7 @@ export default function About() {
 
 					<div className="space-y-6">
 						<h2 className="text-lg font-semibold text-foreground">How I approach work</h2>
-						<div className="grid gap-4">
-							{principles.map((principle) => (
-								<Card key={principle.title}>
-									<h3 className="mb-2 font-medium text-foreground">{principle.title}</h3>
-									<p className="text-sm leading-relaxed text-muted">
-										{principle.description}
-									</p>
-								</Card>
-							))}
-						</div>
+						<PrinciplesList principles={principles} />
 					</div>
 
 					<div className="space-y-4">
@@ -132,41 +123,25 @@ export default function About() {
 							{currentFeedback.length > 0 && (
 								<div className="space-y-4">
 									<h3 className="font-mono text-xs text-muted">Current teams</h3>
-									<div className="grid gap-4 sm:grid-cols-2">
-										{currentFeedback.map((testimonial) => (
-											<TestimonialCard key={testimonial.id} testimonial={testimonial} />
-										))}
-									</div>
+									<TestimonialGrid testimonials={currentFeedback} />
 								</div>
 							)}
 
 							{pastFeedback.length > 0 && (
 								<div className="space-y-4">
 									<h3 className="font-mono text-xs text-muted">Previous teams</h3>
-									<div className="grid gap-4 sm:grid-cols-2">
-										{pastFeedback.map((testimonial) => (
-											<TestimonialCard key={testimonial.id} testimonial={testimonial} />
-										))}
-									</div>
+									<TestimonialGrid testimonials={pastFeedback} />
 								</div>
 							)}
 
 							{uncategorized.length > 0 && (
-								<div className="grid gap-4 sm:grid-cols-2">
-									{uncategorized.map((testimonial) => (
-										<TestimonialCard key={testimonial.id} testimonial={testimonial} />
-									))}
-								</div>
+								<TestimonialGrid testimonials={uncategorized} />
 							)}
 
 							{communityFeedback.length > 0 && (
 								<div className="space-y-4">
 									<h3 className="font-mono text-xs text-muted">From readers</h3>
-									<div className="grid gap-4 sm:grid-cols-2">
-										{communityFeedback.map((testimonial) => (
-											<TestimonialCard key={testimonial.id} testimonial={testimonial} />
-										))}
-									</div>
+									<TestimonialGrid testimonials={communityFeedback} />
 								</div>
 							)}
 						</>

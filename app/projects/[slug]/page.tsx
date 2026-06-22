@@ -60,17 +60,14 @@ export default async function CaseStudyPage({ params }: PageProps) {
 							logo={study.logo}
 							logoLight={study.logoLight}
 							logoDark={study.logoDark}
-							logoInlineWordmark={study.logoInlineWordmark}
-							logoFullLockup={study.logoFullLockup}
+							appearance="plain"
 							size="lg"
 						/>
 						<SectionLabel>{study.domain}</SectionLabel>
 					</div>
-					{!study.logoInlineWordmark && !study.logoFullLockup && (
-						<h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-							{study.name}
-						</h1>
-					)}
+					<h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+						{study.name}
+					</h1>
 					<p className="max-w-2xl text-lg text-muted">{study.tagline}</p>
 					<div className="flex flex-wrap items-center gap-3 pt-2">
 						<span className="font-mono text-xs text-muted">{study.role}</span>

@@ -15,14 +15,11 @@ function LogoProps(study: CaseStudy) {
 		logo: study.logo,
 		logoLight: study.logoLight,
 		logoDark: study.logoDark,
-		logoInlineWordmark: study.logoInlineWordmark,
-		logoFullLockup: study.logoFullLockup,
+		appearance: 'plain' as const,
 	};
 }
 
 export function CaseStudyCard({ study, variant = 'list' }: CaseStudyCardProps) {
-	const showTitle = !study.logoInlineWordmark && !study.logoFullLockup;
-
 	if (variant === 'compact') {
 		return (
 			<Link href={`/projects/${study.slug}`} className="group block">
@@ -34,11 +31,9 @@ export function CaseStudyCard({ study, variant = 'list' }: CaseStudyCardProps) {
 						</div>
 						<div className="space-y-2">
 							<p className="font-mono text-xs text-muted">{study.domain}</p>
-							{showTitle && (
-								<h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors">
-									{study.name}
-								</h3>
-							)}
+							<h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors">
+								{study.name}
+							</h3>
 							<p className="text-sm text-muted line-clamp-2">{study.tagline}</p>
 						</div>
 					</div>
@@ -60,11 +55,9 @@ export function CaseStudyCard({ study, variant = 'list' }: CaseStudyCardProps) {
 
 					<div className="space-y-1">
 						<p className="font-mono text-xs text-muted">{study.domain}</p>
-						{showTitle && (
-							<h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
-								{study.name}
-							</h3>
-						)}
+						<h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
+							{study.name}
+						</h3>
 					</div>
 
 					<p className="text-sm leading-relaxed text-muted">{study.tagline}</p>

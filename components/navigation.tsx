@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Terminal } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { navItems } from '@/lib/data/site';
-import { OpenToWorkBadge } from '@/components/open-to-work-badge';
-import { ThemeToggle } from '@/components/theme-toggle';
+import { primaryNavItems } from '@/lib/data/site';
+import { isNavActive } from '@/components/nav-menu-panel';
+import { NavMoreDropdown } from '@/components/nav-more-dropdown';
 import MobileMenu from '@/components/mobile-menu';
 
 function NavLink({
@@ -24,7 +24,7 @@ function NavLink({
 		<Link
 			href={href}
 			className={cn(
-				'group flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm transition-colors sm:px-3',
+				'group flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm transition-colors',
 				isActive
 					? 'bg-surface-hover font-medium text-foreground'
 					: 'text-muted hover:bg-surface-hover/60 hover:text-foreground'
@@ -65,31 +65,20 @@ export default function Navigation() {
 					</div>
 				</Link>
 
-				<div className="hidden items-center gap-0.5 md:flex">
-					{navItems.map((item) => {
-						const isActive =
-							item.href === '/'
-								? pathname === '/'
-								: pathname.startsWith(item.href);
-
-						return (
-							<NavLink
-								key={item.href}
-								href={item.href}
-								label={item.label}
-								symbol={item.symbol}
-								isActive={isActive}
-							/>
-						);
-					})}
-					<OpenToWorkBadge variant="compact" className="ml-1 hidden lg:inline-flex" />
-					<ThemeToggle className="ml-1.5" />
+				<div className="hidden items-center gap-1 md:flex">
+					{primaryNavItems.map((item) => (
+						<NavLink
+							key={item.href}
+							href={item.href}
+							label={item.label}
+							symbol={item.symbol}
+							isActive={isNavActive(pathname, item.href)}
+						/>
+					))}
+					<NavMoreDropdown />
 				</div>
 
-				<div className="flex items-center gap-2 md:hidden">
-					<ThemeToggle />
-					<MobileMenu />
-				</div>
+				<MobileMenu />
 			</div>
 		</nav>
 	);
