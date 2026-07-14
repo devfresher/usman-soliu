@@ -1,5 +1,3 @@
-// TODO: drop slides.pdf into /public/apiconf/ then uncomment the slides link in the secondary row
-
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { Card } from '@/components/card';
@@ -89,7 +87,6 @@ export default function ApiconfPage() {
 			</section>
 
 			<footer className="mt-6 space-y-1 font-mono text-xs text-muted">
-				{/* TODO: drop slides.pdf into /public/apiconf/ then uncomment:
 				<p>
 					<a
 						href="/apiconf/slides.pdf"
@@ -98,7 +95,6 @@ export default function ApiconfPage() {
 						Download the slides (PDF) →
 					</a>
 				</p>
-				*/}
 				<p>
 					<Link href="/writing" className="text-muted transition-colors hover:text-foreground">
 						More writing →

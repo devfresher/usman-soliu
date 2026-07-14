@@ -3,13 +3,8 @@ import { ArrowRight } from 'lucide-react';
 import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
 import { Card } from '@/components/card';
-import { ImageCarousel } from '@/components/image-carousel';
 import { TalkWorkshopCard } from '@/components/talk-workshop-card';
-import {
-	bootcampInfo,
-	mentorshipFocus,
-	talksAndWorkshops,
-} from '@/lib/data/mentorship';
+import { mentorshipFocus, talksAndWorkshops } from '@/lib/data/mentorship';
 
 export default function Mentorship() {
 	const upcoming = talksAndWorkshops.filter((item) => item.status === 'upcoming');
@@ -76,6 +71,7 @@ export default function Mentorship() {
 						)}
 					</section>
 
+					{/* Break into Tech Bootcamp — restore when ready
 					<section className="space-y-6">
 						<h2 className="text-lg font-semibold text-foreground">
 							{bootcampInfo.title}
@@ -95,6 +91,7 @@ export default function Mentorship() {
 							/>
 						</div>
 					</section>
+					*/}
 				</div>
 
 				<div className="space-y-6">
