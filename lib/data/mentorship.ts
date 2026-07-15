@@ -1,9 +1,16 @@
 export interface SessionMedia {
 	label: string;
-	/** Image preview — e.g. /mentorship/api-conference-lagos-2026/slide-01.png */
+	/** Preview image — e.g. /mentorship/{id}/slide-01.png */
 	src?: string;
-	/** External link — e.g. Google Slides, PDF, or full-resolution image */
+	/** Optional link for this specific item (full-res image, external slide, etc.) */
 	href?: string;
+}
+
+export interface SessionDeck {
+	/** PDF or external slides URL — e.g. /apiconf/slides.pdf */
+	href: string;
+	/** Button label — defaults to "Download PDF" */
+	label?: string;
 }
 
 export interface TalkOrWorkshop {
@@ -14,7 +21,18 @@ export interface TalkOrWorkshop {
 	status: 'upcoming' | 'past';
 	description: string;
 	type: 'talk' | 'workshop';
+	/**
+	 * Slide preview images (title slide first). Add as many as you want —
+	 * the card renders them as a carousel.
+	 * Put files under public/mentorship/{id}/.
+	 */
 	slides?: SessionMedia[];
+	/**
+	 * Full deck download (PDF or hosted slides). Shown as a dedicated action
+	 * under the slide previews. Independent of how many preview images you add.
+	 */
+	deck?: SessionDeck;
+	/** Event photos — same carousel pattern as slides. */
 	photos?: SessionMedia[];
 }
 
@@ -28,39 +46,56 @@ export const mentorshipFocus = [
 ] as const;
 
 /**
- * Add one object per talk or workshop. Each can include slide previews, slide
- * links, and event photos. Put images under public/mentorship/{id}/.
+ * Add one object per talk or workshop.
+ *
+ * Media layout (recommended):
+ *   public/mentorship/{id}/slide-01.png   ← title slide thumbnail
+ *   public/mentorship/{id}/slide-02.png   ← more previews (optional)
+ *   public/mentorship/{id}/photo-01.jpg   ← event photos (optional)
+ *   public/.../deck.pdf                   ← full PDF (or any public path)
  *
  * @example
  * {
- *   id: 'devfest-lagos-2025',
- *   title: 'Designing APIs for Scale',
- *   event: 'DevFest Lagos 2025',
- *   date: 'Nov 2025',
- *   status: 'past',
- *   type: 'talk',
+ *   id: 'api-conference-lagos-2026',
+ *   title: 'From Monolith to Microservices',
+ *   event: 'API Conference Lagos 2026',
+ *   date: 'Jul 2026',
+ *   status: 'upcoming',
+ *   type: 'workshop',
  *   description: '...',
  *   slides: [
- *     { label: 'Title slide', src: '/mentorship/devfest-lagos-2025/slide-01.png' },
- *     { label: 'Full deck', href: 'https://slides.com/...' },
+ *     { label: 'Title slide', src: '/mentorship/api-conference-lagos-2026/slide-01.png' },
+ *     { label: 'Architecture', src: '/mentorship/api-conference-lagos-2026/slide-02.png' },
  *   ],
+ *   deck: {
+ *     href: '/apiconf/slides.pdf',
+ *     label: 'Download full deck (PDF)',
+ *   },
  *   photos: [
- *     { label: 'On stage', src: '/mentorship/devfest-lagos-2025/on-stage.jpg' },
- *     { label: 'Audience Q&A', src: '/mentorship/devfest-lagos-2025/qa.jpg' },
+ *     { label: 'On stage', src: '/mentorship/api-conference-lagos-2026/photo-01.jpg' },
  *   ],
  * }
  */
 export const talksAndWorkshops: TalkOrWorkshop[] = [
 	{
 		id: 'api-conference-lagos-2026',
-		title: 'Backend Engineering Workshop',
+		title: 'From Monolith to Microservices',
 		event: 'API Conference Lagos 2026',
-		date: '2026',
+		date: 'Aug 24, 2026',
 		status: 'upcoming',
 		type: 'workshop',
 		description:
-			'Hands-on session on backend fundamentals — API design, system boundaries, and patterns that hold up in production.',
-		slides: [{ label: 'Workshop slides — coming soon' }],
+			'Building APIs That Survive Production — hands-on session on splitting a monolith, drawing service boundaries, and shipping patterns that hold up under real load.',
+		slides: [
+			{
+				label: 'Title slide',
+				src: '/mentorship/api-conference-lagos-2026/slide-01.png',
+			},
+		],
+		deck: {
+			href: '/apiconf/slides.pdf',
+			label: 'Download full deck (PDF)',
+		},
 		photos: [],
 	},
 ];

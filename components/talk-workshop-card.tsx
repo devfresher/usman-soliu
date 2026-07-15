@@ -11,6 +11,9 @@ export function TalkWorkshopCard({ session }: TalkWorkshopCardProps) {
 	const isUpcoming = session.status === 'upcoming';
 	const slides = session.slides ?? [];
 	const photos = session.photos ?? [];
+	const deck = session.deck;
+	const hasSlides = slides.length > 0 || Boolean(deck);
+	const showSlides = hasSlides || isUpcoming;
 	const showPhotos = photos.length > 0 || session.status === 'past';
 
 	return (
@@ -35,7 +38,7 @@ export function TalkWorkshopCard({ session }: TalkWorkshopCardProps) {
 			<p className="mb-6 text-sm leading-relaxed text-muted">{session.description}</p>
 
 			<div className="space-y-6">
-				{(slides.length > 0 || isUpcoming) && (
+				{showSlides && (
 					<div className="space-y-2">
 						<p className="font-mono text-xs text-muted">Slides</p>
 						<ImageCarousel
@@ -44,6 +47,8 @@ export function TalkWorkshopCard({ session }: TalkWorkshopCardProps) {
 								src: slide.src,
 								href: slide.href,
 							}))}
+							actionHref={deck?.href}
+							actionLabel={deck?.label ?? 'Download PDF'}
 							placeholder="Slides coming soon"
 						/>
 					</div>
