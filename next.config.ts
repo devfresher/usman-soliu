@@ -12,6 +12,16 @@ const nextConfig: NextConfig = {
 				destination: '/apiconf',
 				permanent: false,
 			},
+			{
+				source: '/hi',
+				destination: '/apiconf/connect',
+				permanent: false,
+			},
+			{
+				source: '/connect',
+				destination: '/apiconf/connect',
+				permanent: false,
+			},
 		];
 	},
 };
