@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import Button from '@/components/button';
 import { PageContainer } from '@/components/page-container';
@@ -31,33 +30,31 @@ export default async function Home() {
 		<>
 			<div className="relative">
 				<TechAccent />
-				<PageContainer className="relative flex min-h-[calc(100vh-3.5rem)] flex-col justify-center py-20 sm:py-28">
-					<div className="mx-auto grid max-w-4xl items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-16">
-						<RevealOnMount className="space-y-8 text-center lg:text-left">
-							<div className="flex flex-col items-center gap-3 lg:items-start">
-								<SectionLabel>{siteConfig.title}</SectionLabel>
-								<OpenToWorkBadge />
-							</div>
-							<h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-								Usman Soliu
-							</h1>
-							<p className="mx-auto max-w-xl text-balance text-base leading-relaxed text-muted sm:text-lg lg:mx-0">
-								{homeHeroText}
-							</p>
-							<HomeActions />
+				<PageContainer className="relative flex min-h-[calc(100vh-3.5rem)] flex-col justify-center py-24 sm:py-32">
+					<div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+						<RevealOnMount className="flex flex-col items-center gap-3">
+							<SectionLabel>{siteConfig.title}</SectionLabel>
+							<OpenToWorkBadge />
 						</RevealOnMount>
 
-						<RevealOnMount delay={0.12} className="relative mx-auto hidden lg:block">
-							<div className="relative h-48 w-48 shrink-0 overflow-hidden rounded-2xl border border-border bg-surface shadow-sm xl:h-56 xl:w-56">
-								<Image
-									src="/avatar-illustration.png"
-									alt=""
-									fill
-									className="object-cover"
-									sizes="224px"
-									aria-hidden
-								/>
-							</div>
+						<RevealOnMount delay={0.08} className="mt-8 space-y-5 sm:mt-10">
+							<h1 className="text-balance text-5xl font-semibold tracking-tight text-foreground sm:text-6xl md:text-7xl">
+								Usman Soliu
+							</h1>
+							<div
+								className="mx-auto h-px w-16 bg-linear-to-r from-transparent via-accent/70 to-transparent"
+								aria-hidden
+							/>
+						</RevealOnMount>
+
+						<RevealOnMount delay={0.16} className="mt-6 sm:mt-8">
+							<p className="mx-auto max-w-2xl text-balance text-base leading-relaxed text-muted sm:text-lg md:text-xl">
+								{homeHeroText}
+							</p>
+						</RevealOnMount>
+
+						<RevealOnMount delay={0.24} className="mt-10 sm:mt-12">
+							<HomeActions />
 						</RevealOnMount>
 					</div>
 				</PageContainer>

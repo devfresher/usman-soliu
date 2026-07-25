@@ -4,18 +4,22 @@ import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
 import { Card } from '@/components/card';
 import { TalkWorkshopCard } from '@/components/talk-workshop-card';
-import { mentorshipFocus, talksAndWorkshops } from '@/lib/data/mentorship';
+import {
+	getPastSessions,
+	getUpcomingSessions,
+	mentorshipFocus,
+} from '@/lib/data/mentorship';
 
 export default function Mentorship() {
-	const upcoming = talksAndWorkshops.filter((item) => item.status === 'upcoming');
-	const past = talksAndWorkshops.filter((item) => item.status === 'past');
+	const upcoming = getUpcomingSessions();
+	const past = getPastSessions();
 
 	return (
 		<PageContainer className="space-y-16">
 			<PageHeader
 				label="Mentorship"
 				title="Teaching what lasts"
-				description="I mentor on fundamentals — the kind that still apply when the framework changes."
+				description="I mentor on fundamentals. The kind that still apply when the framework changes."
 			/>
 
 			<div className="grid gap-16 lg:grid-cols-3">
@@ -24,7 +28,7 @@ export default function Mentorship() {
 						<h2 className="text-lg font-semibold text-foreground">How I mentor</h2>
 						<p className="leading-relaxed text-muted">
 							I contribute to community programmes and mentor engineers who want
-							stronger foundations — not another tutorial stack. I focus on how
+							stronger foundations over another tutorial stack. I focus on how
 							systems work, why designs fail, and how to make tradeoffs you can
 							defend in a review.
 						</p>
@@ -71,7 +75,7 @@ export default function Mentorship() {
 						)}
 					</section>
 
-					{/* Break into Tech Bootcamp — restore when ready
+					{/* Break into Tech Bootcamp. Restore when ready.
 					<section className="space-y-6">
 						<h2 className="text-lg font-semibold text-foreground">
 							{bootcampInfo.title}

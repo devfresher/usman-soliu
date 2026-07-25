@@ -34,7 +34,7 @@ export function getWebsiteJsonLd() {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'WebSite',
-		name: `${siteConfig.name} — ${siteConfig.title}`,
+		name: `${siteConfig.name} | ${siteConfig.title}`,
 		url: siteConfig.url,
 		description: siteConfig.description,
 		author: {

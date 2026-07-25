@@ -17,9 +17,9 @@ export interface CaseStudy {
 	appUrl?: string;
 	/** Single logo, or fallback when light/dark not set */
 	logo?: string;
-	/** Light site theme — wordmark/icon for light backgrounds */
+	/** Light site theme: wordmark/icon for light backgrounds */
 	logoLight?: string;
-	/** Dark site theme — wordmark/icon for dark backgrounds */
+	/** Dark site theme: wordmark/icon for dark backgrounds */
 	logoDark?: string;
 	featured: boolean;
 	/** Primary industry bucket for project list filters */
@@ -49,13 +49,13 @@ export const caseStudies: CaseStudy[] = [
 		sector: 'fintech',
 		tags: ['Payments', 'Microservices', 'AI'],
 		problem:
-			'Muslims need a trusted way to track wealth, calculate Zakaat against live nisaab thresholds, give transparently, and vet beneficiaries — not spreadsheets and guesswork.',
+			'Muslims need a trusted way to track wealth, calculate Zakaat against live nisaab thresholds, give transparently, and vet beneficiaries. Spreadsheets leave too much room for error.',
 		context:
 			'Multi-repo platform: NestJS API, React web app, admin panel, and marketing site. Donations, Zakaat applications, community features, and an AI advisor share one PostgreSQL core with strict audit and RBAC.',
 		approach: [
 			'Modularised the API into wealth, nisaab, currency, Zakaat, donation, payment, community, and admin domains with Prisma on PostgreSQL.',
 			'Used Redis caching and BullMQ for notifications, scheduled nisaab/currency jobs, and async side effects via EventEmitter.',
-			'Integrated Paystack for donations, Cloudinary for media, OpenAI for the advisor, and Firebase for push — with global JWT auth, throttling, and audit interceptors.',
+			'Integrated Paystack for donations, Cloudinary for media, OpenAI for the advisor, and Firebase for push. Global JWT auth, throttling, and audit interceptors sit across the stack.',
 			'Shipped separate React (Vite) surfaces for donors, admins at ca.zaakiyah.com, and the public marketing site.',
 		],
 		architecture: [
@@ -83,7 +83,7 @@ export const caseStudies: CaseStudy[] = [
 			'Render',
 		],
 		outcome:
-			'Live platform for Islamic financial tracking, Zakaat calculation, transparent donations, beneficiary vetting, and community — with admin tooling and audit trails across production surfaces.',
+			'Live platform for Islamic financial tracking, Zakaat calculation, transparent donations, beneficiary vetting, and community. Admin tooling and audit trails cover the production surfaces.',
 		metrics: [
 			{ label: 'Transaction volume' },
 			{ label: 'Distribution latency' },
@@ -104,11 +104,11 @@ export const caseStudies: CaseStudy[] = [
 		sector: 'hr',
 		tags: ['HR', 'Payroll', 'Self-service', 'Microservices'],
 		problem:
-			'Growing companies need time tracking, leave management, payroll, recruitment, and performance in one place — not disconnected tools that drift out of sync.',
+			'Growing companies need time tracking, leave management, payroll, recruitment, and performance in one place. Separate tools drift out of sync.',
 		context:
-			'HCMatrix 3.0 launched in 2024 as Snapnet’s cloud HCM for African businesses — payroll, biometric time & attendance, employee self-service, recruitment, and performance. Adoption has grown to 10+ active company tenants and approximately 4k licensed employees (3.5k+) using self-service daily for leave, loans, reimbursement, requisitions, and related workflows. I took technical team lead in 2025 as write volume during payroll runs, attendance ingestion, and multi-tenant RBAC scaled.',
+			'HCMatrix 3.0 launched in 2024 as Snapnet’s cloud HCM for African businesses. It covers payroll, biometric time & attendance, employee self-service, recruitment, and performance. Adoption has grown to 10+ active company tenants and approximately 4k licensed employees (3.5k+) using self-service daily for leave, loans, reimbursement, requisitions, and related workflows. I took technical team lead in 2025 as write volume during payroll runs, attendance ingestion, and multi-tenant RBAC scaled.',
 		approach: [
-			'Split the platform into domain services — utility, payroll, time & attendance, recruitment, performance — each owning its data and deploy cycle.',
+			'Split the platform into domain services (utility, payroll, time & attendance, recruitment, performance), each owning its data and deploy cycle.',
 			'Used gRPC with a shared proto submodule for synchronous cross-service calls (company, employee, workflow data).',
 			'Offloaded heavy payroll and notification work to RabbitMQ; used BullMQ workers for biometric attendance and break processing.',
 			'Added Socket.IO on utility and recruitment for real-time updates during hiring workflows and live application chat.',
@@ -138,7 +138,7 @@ export const caseStudies: CaseStudy[] = [
 			'Azure Blob',
 		],
 		outcome:
-			'Production HR platform in daily use across 10+ companies — approximately 4k licensed employees (3.5k+) on self-service for leave, loans, reimbursement, and requisitions, with biometric time & attendance and 1k+ employees paid through payroll each month. Twelve microservices span payroll, attendance, recruitment, performance, and notifications, deployable independently as tenant load grows.',
+			'Production HR platform in daily use across 10+ companies. Approximately 4k licensed employees (3.5k+) use self-service for leave, loans, reimbursement, and requisitions, with biometric time & attendance and 1k+ employees paid through payroll each month. Twelve microservices span payroll, attendance, recruitment, performance, and notifications, deployable independently as tenant load grows.',
 		metrics: [
 			{ label: 'Active company tenants', value: '10+' },
 			{ label: 'Licensed employees', value: '~4k (3.5k+)' },
@@ -162,7 +162,7 @@ export const caseStudies: CaseStudy[] = [
 		sector: 'fintech',
 		tags: ['Payments', 'P2P', 'Compliance'],
 		problem:
-			'Users need a reliable way to exchange currency and complete peer deals — with clear rates, verified identities, secure wallets, and protection against failed or duplicate transactions.',
+			'Users need a reliable way to exchange currency and complete peer deals. That means clear rates, verified identities, secure wallets, and protection against failed or duplicate transactions.',
 		context:
 			'Financial platform where correctness matters more than speed. Every deal, payout, and webhook retry must stay traceable, idempotent, and safe from race conditions on concurrent wallet operations.',
 		approach: [
@@ -192,7 +192,7 @@ export const caseStudies: CaseStudy[] = [
 			'DigitalOcean',
 		],
 		outcome:
-			'Live exchange platform processing peer deals, Haqqpay-managed deals, payouts, and rate-driven conversions — deployed via Docker on DigitalOcean with background job processing for financial workflows.',
+			'Live exchange platform processing peer deals, Haqqpay-managed deals, payouts, and rate-driven conversions. Deployed via Docker on DigitalOcean with background job processing for financial workflows.',
 		metrics: [
 			{ label: 'Daily transaction volume' },
 			{ label: 'Failed transaction rate' },
@@ -202,7 +202,7 @@ export const caseStudies: CaseStudy[] = [
 	{
 		slug: 'jekaeat',
 		name: 'Jekaeat',
-		tagline: 'Food delivery — orders, riders, vendors, and payouts in one API',
+		tagline: 'Food delivery: orders, riders, vendors, and payouts in one API',
 		domain: 'Food · Logistics',
 		role: 'Backend Engineer',
 		status: 'Live',
@@ -213,11 +213,11 @@ export const caseStudies: CaseStudy[] = [
 		sector: 'food',
 		tags: ['Food delivery', 'Payments', 'Logistics'],
 		problem:
-			'Food delivery platforms need reliable order lifecycle management — vendor menus, rider dispatch, wallet top-ups, and vendor payouts — without dropped orders or duplicate charges during peak hours.',
+			'Food delivery platforms need reliable order lifecycle management. Vendor menus, rider dispatch, wallet top-ups, and vendor payouts have to hold up without dropped orders or duplicate charges during peak hours.',
 		context:
-			'Jekaeat is a Nigerian food and agri-commerce platform (founded 2020) connecting restaurants, vendors, and riders — starting in Minna and expanding meal-kit and fresh produce logistics to Lagos and Ibadan. The Express API powered customer, vendor, and rider apps through production scale, including 3,000+ food orders delivered in Minna on a two-bike fleet before a 2024 operational pivot toward hybrid B2B/B2C and decentralized logistics.',
+			'Jekaeat is a Nigerian food and agri-commerce platform (founded 2020) connecting restaurants, vendors, and riders. It started in Minna and expanded meal-kit and fresh produce logistics to Lagos and Ibadan. The Express API powered customer, vendor, and rider apps through production scale, including 3,000+ food orders delivered in Minna on a two-bike fleet before a 2024 operational pivot toward hybrid B2B/B2C and decentralized logistics.',
 		approach: [
-			'Modelled orders, vendors, riders, products, wallets, and payouts in MongoDB with Mongoose — keeping domain documents cohesive for fast reads on active orders.',
+			'Modelled orders, vendors, riders, products, wallets, and payouts in MongoDB with Mongoose, keeping domain documents cohesive for fast reads on active orders.',
 			'Used BullMQ workers for payout processing and async side effects; Redis-backed rate limiting and caching for hot paths.',
 			'Integrated Paystack for wallet funding and webhooks with idempotent handlers; Firebase Admin for push on order state changes.',
 			'Added route optimization, referral earnings, ratings, scheduled orders, and Bull Board for queue visibility in production.',
@@ -244,7 +244,7 @@ export const caseStudies: CaseStudy[] = [
 			'Winston',
 		],
 		outcome:
-			'Backend supported 3,000+ completed food orders in Minna — vendor catalogues, rider dispatch, Paystack wallets, vendor payouts, route optimization, and Firebase push — with the platform still live and scaling across Nigerian cities as a hybrid B2C delivery and B2B vendor API product.',
+			'Backend supported 3,000+ completed food orders in Minna, covering vendor catalogues, rider dispatch, Paystack wallets, vendor payouts, route optimization, and Firebase push. The platform is still live and scaling across Nigerian cities as a hybrid B2C delivery and B2B vendor API product.',
 		metrics: [
 			{ label: 'Food orders delivered', value: '3,000+ (Minna)' },
 			{ label: 'Operating since', value: '2020' },
@@ -268,7 +268,7 @@ export const caseStudies: CaseStudy[] = [
 		sector: 'mobility',
 		tags: ['Mobility', 'APIs', 'NestJS'],
 		problem:
-			'Mobility operators need backend systems that handle bookings, fleet coordination, and trip status — without going down during peak hours.',
+			'Mobility operators need backend systems that handle bookings, fleet coordination, and trip status, and stay up during peak hours.',
 		context:
 			'Building the API layer for a mobility product where scheduling, fleet data, and rider requests intersect. The NestJS service foundation is in place; domain modules for trips, fleet, and bookings are the next layer.',
 		approach: [
@@ -283,7 +283,7 @@ export const caseStudies: CaseStudy[] = [
 		],
 		stack: ['Node.js', 'TypeScript', 'NestJS'],
 		outcome:
-			'Backend API foundation in active development for live mobility operations — domain services and data layer rolling out incrementally.',
+			'Backend API foundation in active development for live mobility operations. Domain services and data layer are rolling out incrementally.',
 		metrics: [{ label: 'Active trips' }, { label: 'API uptime' }],
 	},
 	{
@@ -299,13 +299,13 @@ export const caseStudies: CaseStudy[] = [
 		sector: 'edtech',
 		tags: ['EdTech', 'Payments', 'Mentorship'],
 		problem:
-			'Students need a trusted way to fund education — enroll in programs, access loans and campaigns, get matched with mentors, and track progress to certification without juggling disconnected tools.',
+			'Students need a trusted way to fund education: enroll in programs, access loans and campaigns, get matched with mentors, and track progress to certification without juggling disconnected tools.',
 		context:
-			'Multi-sided platform with separate student, mentor, and admin apps — currently in dev and testing on Netlify, not yet in public production. Wallet balances, Paystack payments, loan lifecycles, and mentorship matching need audit trails, queue-backed async work, and strict enrollment policy enforcement before go-live.',
+			'Multi-sided platform with separate student, mentor, and admin apps. Currently in dev and testing on Netlify, not yet in public production. Wallet balances, Paystack payments, loan lifecycles, and mentorship matching need audit trails, queue-backed async work, and strict enrollment policy enforcement before go-live.',
 		approach: [
-			'Built modular NestJS domains — programs, wallet, payment, funding, loan, mentorship, certification — with Prisma on PostgreSQL.',
+			'Built modular NestJS domains (programs, wallet, payment, funding, loan, mentorship, certification) with Prisma on PostgreSQL.',
 			'Used BullMQ for payments, mentor matching, payouts, notifications, and async certificate PDF generation.',
-			'Enforced student policy centrally — max concurrent enrollments, aid caps, and wallet-only enrollment paths.',
+			'Enforced student policy centrally: max concurrent enrollments, aid caps, and wallet-only enrollment paths.',
 			'Separated platforms via X-Client-App auth so students, mentors, and admins cannot cross into the wrong UI.',
 		],
 		architecture: [
@@ -328,7 +328,7 @@ export const caseStudies: CaseStudy[] = [
 			'Cloudinary',
 		],
 		outcome:
-			'Backend in active development — program enrollment, wallet top-ups, loans, campaigns, mentorship matching, LMS progress, and certificate issuance wired through queue-backed payment and payout flows, with the client apps exercised on the Netlify dev/testing environment ahead of production launch.',
+			'Backend in active development. Program enrollment, wallet top-ups, loans, campaigns, mentorship matching, LMS progress, and certificate issuance are wired through queue-backed payment and payout flows. Client apps are exercised on the Netlify dev/testing environment ahead of production launch.',
 		metrics: [
 			{ label: 'Environment', value: 'Dev & testing (Netlify)' },
 			{ label: 'Platform surfaces', value: 'Student · mentor · admin apps' },
@@ -338,7 +338,7 @@ export const caseStudies: CaseStudy[] = [
 	{
 		slug: 'subi',
 		name: 'SubI',
-		tagline: 'Track subscription renewals — inbox sync, reminders, and cancel links',
+		tagline: 'Track subscription renewals with inbox sync, reminders, and cancel links',
 		domain: 'Productivity · SaaS',
 		role: 'Founder & Builder',
 		status: 'In Progress',
@@ -348,11 +348,11 @@ export const caseStudies: CaseStudy[] = [
 		sector: 'productivity',
 		tags: ['SaaS', 'Supabase', 'Next.js'],
 		problem:
-			'People lose money on forgotten renewals because subscriptions live scattered across email threads, bank statements, and memory — with no single place to see what bills next.',
+			'People lose money on forgotten renewals because subscriptions live scattered across email threads, bank statements, and memory. There is no single place to see what bills next.',
 		context:
-			'Solo-built Next.js app in pre-launch. Users connect Gmail for renewal hints, confirm or edit suggestions manually, and get timezone-aware email reminders before charges — with cancel URLs stored beside each subscription.',
+			'Solo-built Next.js app in pre-launch. Users connect Gmail for renewal hints, confirm or edit suggestions manually, and get timezone-aware email reminders before charges. Cancel URLs are stored beside each subscription.',
 		approach: [
-			'Used Supabase for auth, Postgres storage, and edge functions — keeping the app serverless-friendly with Row Level Security on user data.',
+			'Used Supabase for auth, Postgres storage, and edge functions, keeping the app serverless-friendly with Row Level Security on user data.',
 			'Built Gmail OAuth sync that surfaces inbox messages that look like renewals; nothing posts without explicit user confirmation.',
 			'Added manual subscription entry, deduplication, billing webhooks via Paystack, and Resend-powered reminder dispatch.',
 			'Gated the product behind a waitlist (`SUBI_PRE_LAUNCH`) while core dashboard, settings, and billing flows are finished.',
@@ -376,7 +376,7 @@ export const caseStudies: CaseStudy[] = [
 			'Tailwind CSS',
 		],
 		outcome:
-			'Pre-launch subscription tracker with inbox-assisted discovery, manual edits, renewal reminders, and cancel-link storage — built as a personal product with production-grade auth and billing foundations.',
+			'Pre-launch subscription tracker with inbox-assisted discovery, manual edits, renewal reminders, and cancel-link storage. Built as a personal product with production-grade auth and billing foundations.',
 		metrics: [{ label: 'Waitlist signups' }, { label: 'Renewals tracked' }],
 	},
 ];

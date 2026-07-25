@@ -9,7 +9,7 @@ interface FlipProfileCardProps {
 }
 
 /**
- * Playful profile card — face never revealed on flip.
+ * Playful profile card. Face never revealed on flip.
  * Front: `public/portrait-back.png`. Back: terminal punchline.
  */
 export function FlipProfileCard({ className }: FlipProfileCardProps) {
@@ -40,7 +40,7 @@ export function FlipProfileCard({ className }: FlipProfileCardProps) {
 				)}
 				aria-label="Flip profile card"
 			>
-				{/* Front — back view / silhouette tease */}
+				{/* Front: back view / silhouette tease */}
 				<div className="absolute inset-0 overflow-hidden rounded-lg border border-border bg-surface [backface-visibility:hidden]">
 					{hasBackPhoto ? (
 						<Image
@@ -78,7 +78,7 @@ export function FlipProfileCard({ className }: FlipProfileCardProps) {
 					</div>
 				</div>
 
-				{/* Back — punchline */}
+				{/* Back: punchline */}
 				<div className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-lg border border-border bg-surface p-5 [backface-visibility:hidden] [transform:rotateY(180deg)]">
 					<div className="space-y-3 font-mono text-xs leading-relaxed">
 						<p className="text-muted-foreground">

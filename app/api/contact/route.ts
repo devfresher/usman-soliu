@@ -45,7 +45,7 @@ export async function POST(request: Request) {
 		const body = await request.json();
 		const { name, email, subject, message, website } = body;
 
-		// Honeypot — bots fill hidden fields; respond OK without sending mail.
+		// Honeypot: bots fill hidden fields; respond OK without sending mail.
 		if (website) {
 			return NextResponse.json({ success: true });
 		}

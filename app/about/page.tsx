@@ -18,7 +18,7 @@ import {
 } from '@/lib/data/testimonials';
 
 const workingWithMe = [
-	'I ask a lot of questions upfront — context saves rework later.',
+	'I ask a lot of questions upfront. Context saves rework later.',
 	'I prefer written decisions for anything architectural.',
 	'I will push back if a deadline conflicts with correctness on financial or user data.',
 	'I am direct in reviews, but I care about the person behind the code.',
@@ -51,7 +51,7 @@ export default function About() {
 						<p>
 							When I lead, I stay hands-on. I would rather review a schema change
 							than delegate it blindly. When I build, I think about the product
-							constraint behind the ticket — who is blocked if this API is slow or
+							constraint behind the ticket: who is blocked if this API is slow or
 							wrong?
 						</p>
 					</div>

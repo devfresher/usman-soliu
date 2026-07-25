@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { principles, siteConfig } from '@/lib/data/site';
 
-export const alt = `${siteConfig.name} — ${siteConfig.title}`;
+export const alt = `${siteConfig.name} | ${siteConfig.title}`;
 export const size = {
 	width: 1200,
 	height: 630,
