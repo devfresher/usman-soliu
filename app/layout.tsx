@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 		type: 'website',
 		locale: 'en_US',
 		url: siteConfig.url,
-		siteName: `${siteConfig.name} — ${siteConfig.title}`,
+		siteName: `${siteConfig.name} | ${siteConfig.title}`,
 		title: `${siteConfig.name} | ${siteConfig.title}`,
 		description: siteConfig.description,
 	},

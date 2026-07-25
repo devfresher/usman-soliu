@@ -116,7 +116,7 @@ export async function getHashnodePosts(limit = 12): Promise<HashnodePost[]> {
 	return writingPosts.slice(0, limit);
 }
 
-/** Canonical blog URL — prefer publication metadata when set. */
+/** Canonical blog URL. Prefer publication metadata when set. */
 export function getHashnodeBlogUrl(): string {
 	return hashnodePublication.canonicalURL || siteConfig.hashnodeUrl;
 }

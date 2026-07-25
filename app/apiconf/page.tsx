@@ -26,7 +26,7 @@ const links = [
 		symbol: '{}',
 		title: 'The workshop repos',
 		description:
-			'monolith/ and microservices/ — both docker compose up and ready. Break them the way we did on stage.',
+			'monolith/ and microservices/. Both docker compose up and ready. Break them the way we did on stage.',
 		hint: 'git clone → docker compose up → break things',
 		href: withRef('https://github.com/devfresher/api-conf-workshop'),
 	},
@@ -35,7 +35,7 @@ const links = [
 		symbol: '<>',
 		title: 'The full written walkthrough',
 		description:
-			'From Monolith to Microservices: Building APIs That Survive Production — the 29-min deep dive behind the talk.',
+			'From Monolith to Microservices: Building APIs That Survive Production. The 29-min deep dive behind the talk.',
 		hint: '29 min read · no fluff',
 		href: withRef('https://code-along.hashnode.dev/from-monolith-to-microservices'),
 	},
@@ -95,11 +95,11 @@ export default function ApiconfPage() {
 								<span className="rounded-full border border-accent/30 bg-accent-muted px-2.5 py-0.5 font-mono text-[10px] text-accent">
 									APIConf Lagos 2026
 								</span>
-								<span className="font-mono text-[10px] text-muted">Aug 24 · workshop</span>
+								<span className="font-mono text-[10px] text-muted">Jul 24 · workshop</span>
 							</div>
 
 							<p className="font-mono text-xs text-muted">
-								{'// status: applause_received — welcome aboard'}
+								{'// status: applause_received · welcome aboard'}
 							</p>
 
 							<h1
@@ -110,8 +110,8 @@ export default function ApiconfPage() {
 							</h1>
 
 							<p className="text-sm leading-snug text-muted">
-								Three links. Zero signup forms. Everything from the room — grab what you
-								need before venue Wi‑Fi gives up.
+								Three links. Zero signup forms. Everything from the room. Grab what you
+								need before venue Wi-Fi gives up.
 							</p>
 
 							<div className="flex flex-wrap items-center justify-between gap-3">

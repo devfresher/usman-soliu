@@ -4,7 +4,7 @@ import { siteConfig } from '@/lib/data/site';
 export const metadata: Metadata = {
 	title: 'Case Studies',
 	description:
-		'Backend engineering case studies — Zaakiyah, HCMatrix, Haqqpay, Jekaeat, Talentcona, Togo Mobility, and SubI.',
+		'Backend engineering case studies: Zaakiyah, HCMatrix, Haqqpay, Jekaeat, Talentcona, Togo Mobility, and SubI.',
 	openGraph: {
 		title: `Case Studies | ${siteConfig.name}`,
 		url: `${siteConfig.url}/projects`,

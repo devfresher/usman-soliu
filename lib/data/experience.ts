@@ -8,7 +8,7 @@ export interface ExperienceEntry {
 	current?: boolean;
 }
 
-/** Career milestones — newest first for the About timeline. */
+/** Career milestones, newest first for the About timeline. */
 export const experienceTimeline: ExperienceEntry[] = [
 	{
 		id: 'hcmatrix-tech-lead-2026',

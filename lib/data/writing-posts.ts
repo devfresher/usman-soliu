@@ -26,14 +26,14 @@ function postEntry(
 
 /**
  * Curated posts from code-along.hashnode.dev.
- * Used when the Hashnode API is unavailable — keep slugs aligned with Hashnode.
+ * Used when the Hashnode API is unavailable. Keep slugs aligned with Hashnode.
  */
 export const writingPosts: WritingPost[] = [
 	postEntry({
 		subtitle: 'Building APIs That Survive Production',
 		title: 'From Monolith to Microservices',
 		brief:
-			'Patterns for timeouts, retries, rate limits, and the failure modes that show up after launch — not in tutorials.',
+			'Patterns for timeouts, retries, rate limits, and the failure modes that show up after launch. Tutorials usually skip these.',
 		slug: 'from-monolith-to-microservices',
 		publishedAt: '2026-06-13',
 		readTimeInMinutes: 29,
@@ -60,7 +60,7 @@ export const writingPosts: WritingPost[] = [
 	}),
 	postEntry({
 		subtitle: 'Smart Strategy Pattern in NestJS Notifications',
-		title: 'Building a Notification System in NestJS – Part 2',
+		title: 'Building a Notification System in NestJS - Part 2',
 		brief:
 			'Routing email, push, and in-app channels with a strategy pattern instead of growing if/else chains.',
 		slug: 'building-a-notification-system-in-nestjs-part-2',
@@ -70,7 +70,7 @@ export const writingPosts: WritingPost[] = [
 	}),
 	postEntry({
 		subtitle: 'The Event-Driven Core',
-		title: 'Building a Notification System in NestJS – Part 1',
+		title: 'Building a Notification System in NestJS - Part 1',
 		brief:
 			'Emitting events, queuing with BullMQ, and keeping the HTTP path fast in an event-driven notification system.',
 		slug: 'building-a-notification-system-in-nestjs-part-1-the-event-driven-core',
@@ -80,7 +80,7 @@ export const writingPosts: WritingPost[] = [
 	}),
 	postEntry({
 		title: 'HTTPS beyond the “S”',
-		brief: 'What HTTPS actually guarantees — and what it does not — when you are designing backend security.',
+		brief: 'What HTTPS actually guarantees, and what it does not, when you are designing backend security.',
 		slug: 'the-buka-series-part-2',
 		publishedAt: '2025-04-11',
 		readTimeInMinutes: 2,
@@ -98,7 +98,7 @@ export const writingPosts: WritingPost[] = [
 		title: 'Understanding Database Types: When to Use What',
 		subtitle: 'A friendly guide to relational, non-relational, and in-memory databases',
 		brief:
-			'When to reach for Postgres, document stores, or Redis — and how to pick without cargo-culting the stack.',
+			'When to reach for Postgres, document stores, or Redis, and how to pick without cargo-culting the stack.',
 		slug: 'understanding-database-types-when-to-use-what',
 		publishedAt: '2025-04-03',
 		readTimeInMinutes: 7,
@@ -108,7 +108,7 @@ export const writingPosts: WritingPost[] = [
 		title: 'Why Job Queues In Your System Architecture?',
 		subtitle: 'A Comprehensive Guide to Efficient Job Queuing and Background Processing for Scalable Applications',
 		brief:
-			'Queues, workers, retries, and backpressure — the pieces you need before background jobs become a bottleneck.',
+			'Queues, workers, retries, and backpressure. The pieces you need before background jobs become a bottleneck.',
 		slug: 'why-job-queues-in-your-system-architecture',
 		publishedAt: '2024-10-13',
 		readTimeInMinutes: 8,
@@ -127,7 +127,7 @@ export const writingPosts: WritingPost[] = [
 		title: 'Solutions To Lost Update Concurrency Problem',
 		subtitle: 'Practical Techniques in Typescript for Solving Concurrency Issues with Modern DBMS',
 		brief:
-			'Race conditions, lost updates, and isolation levels — with TypeScript examples against real database behaviour.',
+			'Race conditions, lost updates, and isolation levels, with TypeScript examples against real database behaviour.',
 		slug: 'solutions-to-lost-update-concurrency-problem',
 		publishedAt: '2024-08-16',
 		readTimeInMinutes: 8,

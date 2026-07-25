@@ -1,6 +1,6 @@
-/** General toolkit — aligned with stacks used across production case studies. */
+/** General toolkit. Aligned with stacks used across production case studies. */
 export const techStackIntro =
-	'Tools from systems I have shipped or led — HR SaaS, fintech, food delivery, EdTech, and charity platforms. I pick what fits the problem, not what is trending.';
+	'Tools from systems I have shipped or led: HR SaaS, fintech, food delivery, EdTech, and charity platforms. I pick what fits the problem over what is trending.';
 
 export const techStackCategories = [
 	{

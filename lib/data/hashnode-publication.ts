@@ -1,4 +1,4 @@
-/** Publication metadata from Hashnode — used to build canonical post URLs. */
+/** Publication metadata from Hashnode. Used to build canonical post URLs. */
 export const hashnodePublication = {
 	url: 'https://code-along.hashnode.dev',
 	canonicalURL: 'https://code-along.hashnode.dev',

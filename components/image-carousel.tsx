@@ -91,7 +91,7 @@ export function ImageCarousel({
 						target="_blank"
 						rel="noopener noreferrer"
 						className="absolute inset-0 block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
-						aria-label={`${current.label} — ${actionLabel}`}
+						aria-label={`${current.label}: ${actionLabel}`}
 					>
 						<Image
 							src={current.src}

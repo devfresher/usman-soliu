@@ -15,7 +15,7 @@ export interface Testimonial {
 	relationship: TestimonialRelationship;
 	/** Whether they worked together at the company currently or in the past */
 	context?: 'current' | 'past';
-	/** Show on the home page (keep to 2–3) */
+	/** Show on the home page (keep to 2-3) */
 	featured?: boolean;
 	linkedIn?: string;
 	/** Public post or profile where the feedback appeared */

@@ -157,8 +157,8 @@ export default function Contact() {
 							)}
 
 							<p className="text-xs leading-relaxed text-muted">
-								Your message is sent by email only — not stored on this site. I use it
-								solely to reply to you.
+								Your message is sent by email only. It is not stored on this site. I use
+								it solely to reply to you.
 							</p>
 						</form>
 					</Card>

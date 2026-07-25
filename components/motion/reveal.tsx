@@ -50,7 +50,7 @@ interface RevealStaggerProps {
 	className?: string;
 }
 
-/** Layout wrapper — pair with RevealItem index for stagger. */
+/** Layout wrapper. Pair with RevealItem index for stagger. */
 export function RevealStagger({ children, className }: RevealStaggerProps) {
 	return <div className={className}>{children}</div>;
 }
@@ -91,7 +91,7 @@ export function RevealItem({
 	);
 }
 
-/** Hero / above-the-fold entrance — runs on mount, no scroll needed. */
+/** Hero / above-the-fold entrance. Runs on mount, no scroll needed. */
 export function RevealOnMount({
 	children,
 	className,

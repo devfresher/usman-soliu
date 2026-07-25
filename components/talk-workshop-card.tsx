@@ -1,20 +1,26 @@
 import { Calendar } from 'lucide-react';
 import { Card } from '@/components/card';
+import { EventPhotoStrip } from '@/components/event-photo-strip';
 import { ImageCarousel } from '@/components/image-carousel';
-import type { TalkOrWorkshop } from '@/lib/data/mentorship';
+import {
+	formatSessionDate,
+	getSessionStatus,
+	type TalkOrWorkshop,
+} from '@/lib/data/mentorship';
 
 interface TalkWorkshopCardProps {
 	session: TalkOrWorkshop;
 }
 
 export function TalkWorkshopCard({ session }: TalkWorkshopCardProps) {
-	const isUpcoming = session.status === 'upcoming';
+	const status = getSessionStatus(session);
+	const isUpcoming = status === 'upcoming';
 	const slides = session.slides ?? [];
 	const photos = session.photos ?? [];
 	const deck = session.deck;
 	const hasSlides = slides.length > 0 || Boolean(deck);
 	const showSlides = hasSlides || isUpcoming;
-	const showPhotos = photos.length > 0 || session.status === 'past';
+	const showPhotos = photos.length > 0 || status === 'past';
 
 	return (
 		<Card>
@@ -29,7 +35,7 @@ export function TalkWorkshopCard({ session }: TalkWorkshopCardProps) {
 				</span>
 				<span className="flex items-center gap-1 font-mono text-xs text-muted">
 					<Calendar className="h-3 w-3" />
-					{session.date}
+					{formatSessionDate(session.date)}
 				</span>
 			</div>
 
@@ -57,14 +63,7 @@ export function TalkWorkshopCard({ session }: TalkWorkshopCardProps) {
 				{showPhotos && (
 					<div className="space-y-2">
 						<p className="font-mono text-xs text-muted">Event photos</p>
-						<ImageCarousel
-							items={photos.map((photo) => ({
-								label: photo.label,
-								src: photo.src,
-								href: photo.href,
-							}))}
-							placeholder="Event photos coming soon"
-						/>
+						<EventPhotoStrip photos={photos} />
 					</div>
 				)}
 			</div>

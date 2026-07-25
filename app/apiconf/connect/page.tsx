@@ -6,9 +6,9 @@ import { siteConfig } from '@/lib/data/site';
 
 export const dynamic = 'force-static';
 
-const title = 'Say hi — APIConf Lagos 2026 | Usman Soliu';
+const title = 'Say hi · APIConf Lagos 2026 | Usman Soliu';
 const description =
-	'Connect after the APIConf Lagos 2026 workshop — LinkedIn, email, and more from Usman Soliu (devfresher).';
+	'Connect after the APIConf Lagos 2026 workshop. LinkedIn, email, and more from Usman Soliu (devfresher).';
 const canonical = `${siteConfig.url}/apiconf/connect`;
 
 export const metadata: Metadata = {
@@ -66,7 +66,7 @@ const links = [
 		step: '04',
 		symbol: '<>',
 		title: 'More writing',
-		description: 'Backend engineering notes on Code Along — including the full workshop walkthrough.',
+		description: 'Backend engineering notes on Code Along, including the full workshop walkthrough.',
 		hint: 'code-along.hashnode.dev',
 		href: withRef('https://code-along.hashnode.dev'),
 		external: true,
@@ -131,7 +131,7 @@ export default function ApiconfConnectPage() {
 							</div>
 
 							<p className="font-mono text-xs text-muted">
-								{'// after the workshop — stay in touch'}
+								{'// after the workshop · stay in touch'}
 							</p>
 
 							<h1
@@ -142,7 +142,7 @@ export default function ApiconfConnectPage() {
 							</h1>
 
 							<p className="text-sm leading-snug text-muted">
-								One place for LinkedIn, email, and where else to find me — mention APIConf so I
+								One place for LinkedIn, email, and where else to find me. Mention APIConf so I
 								know you were in the room.
 							</p>
 						</header>

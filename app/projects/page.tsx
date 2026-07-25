@@ -26,7 +26,7 @@ export default function Projects() {
 			<PageHeader
 				label="Case studies"
 				title="Real systems, real constraints"
-				description="Problems I have worked on — what broke, what we built, and what I would do differently."
+				description="Problems I have worked on. What broke, what we built, and what I would do differently."
 			/>
 
 			<Suspense fallback={<ExplorerFallback />}>
