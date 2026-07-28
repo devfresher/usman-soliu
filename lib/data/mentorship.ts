@@ -141,12 +141,24 @@ export const talksAndWorkshops: TalkOrWorkshop[] = [
 		},
 		photos: [
 			{
-				label: 'Workshop room',
+				label: 'Speaking',
 				src: '/mentorship/api-conference-lagos-2026/photo-01.png',
 			},
 			{
 				label: 'On stage',
 				src: '/mentorship/api-conference-lagos-2026/photo-02.png',
+			},
+			{
+				label: 'Mid-session',
+				src: '/mentorship/api-conference-lagos-2026/photo-03.png',
+			},
+			{
+				label: 'The room',
+				src: '/mentorship/api-conference-lagos-2026/photo-04.png',
+			},
+			{
+				label: 'Group photo',
+				src: '/mentorship/api-conference-lagos-2026/photo-05.png',
 			},
 		],
 	},

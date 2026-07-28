@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import { ImageIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -13,10 +16,12 @@ function PhotoFrame({
 	photo,
 	className,
 	priority = false,
+	sizes = '(max-width: 768px) 100vw, 640px',
 }: {
 	photo: SessionMedia;
 	className?: string;
 	priority?: boolean;
+	sizes?: string;
 }) {
 	if (!photo.src) {
 		return (
@@ -31,7 +36,7 @@ function PhotoFrame({
 		);
 	}
 
-	const image = (
+	return (
 		<div
 			className={cn(
 				'relative aspect-4/3 overflow-hidden rounded-lg border border-border bg-surface',
@@ -43,27 +48,11 @@ function PhotoFrame({
 				alt={photo.label}
 				fill
 				priority={priority}
-				className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-				sizes="(max-width: 768px) 100vw, 320px"
+				className="object-cover"
+				sizes={sizes}
 			/>
 		</div>
 	);
-
-	if (photo.href) {
-		return (
-			<a
-				href={photo.href}
-				target="_blank"
-				rel="noopener noreferrer"
-				className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-				aria-label={photo.label}
-			>
-				{image}
-			</a>
-		);
-	}
-
-	return <div className="group">{image}</div>;
 }
 
 export function EventPhotoStrip({
@@ -72,6 +61,7 @@ export function EventPhotoStrip({
 	placeholder = 'Event photos coming soon',
 }: EventPhotoStripProps) {
 	const withSrc = photos.filter((photo) => photo.src);
+	const [index, setIndex] = useState(0);
 
 	if (withSrc.length === 0) {
 		return (
@@ -98,25 +88,81 @@ export function EventPhotoStrip({
 		);
 	}
 
-	return (
-		<figure className={cn('space-y-2', className)}>
-			<ul
-				className={cn(
-					'grid gap-2 sm:gap-3',
-					withSrc.length === 2 ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-3',
-				)}
-			>
-				{withSrc.map((photo, index) => (
-					<li key={photo.src ?? photo.label}>
-						<PhotoFrame photo={photo} priority={index === 0} />
-					</li>
-				))}
-			</ul>
-			{withSrc.length <= 3 && (
+	if (withSrc.length === 2) {
+		return (
+			<figure className={cn('space-y-2', className)}>
+				<ul className="grid grid-cols-2 gap-2 sm:gap-3">
+					{withSrc.map((photo, i) => (
+						<li key={photo.src ?? photo.label}>
+							<PhotoFrame
+								photo={photo}
+								priority={i === 0}
+								sizes="(max-width: 768px) 50vw, 320px"
+							/>
+						</li>
+					))}
+				</ul>
 				<figcaption className="font-mono text-xs text-muted">
 					{withSrc.map((photo) => photo.label).join(' · ')}
 				</figcaption>
-			)}
+			</figure>
+		);
+	}
+
+	const current = withSrc[Math.min(index, withSrc.length - 1)];
+
+	return (
+		<figure className={cn('space-y-3', className)} aria-roledescription="carousel">
+			<div className="relative overflow-hidden rounded-lg border border-border bg-surface">
+				<div className="relative aspect-16/10">
+					<Image
+						key={current.src}
+						src={current.src!}
+						alt={current.label}
+						fill
+						priority
+						className="object-cover"
+						sizes="(max-width: 768px) 100vw, 640px"
+					/>
+				</div>
+			</div>
+
+			<ul className="grid grid-cols-5 gap-1.5 sm:gap-2" role="tablist" aria-label="Event photos">
+				{withSrc.map((photo, i) => {
+					const selected = i === index;
+					return (
+						<li key={photo.src ?? photo.label}>
+							<button
+								type="button"
+								role="tab"
+								aria-selected={selected}
+								aria-label={photo.label}
+								onClick={() => setIndex(i)}
+								className={cn(
+									'group relative block w-full overflow-hidden rounded-md border bg-surface transition-[border-color,opacity] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+									selected
+										? 'border-foreground/40 opacity-100'
+										: 'border-border opacity-70 hover:opacity-100',
+								)}
+							>
+								<span className="relative block aspect-4/3">
+									<Image
+										src={photo.src!}
+										alt=""
+										fill
+										className="object-cover"
+										sizes="120px"
+									/>
+								</span>
+							</button>
+						</li>
+					);
+				})}
+			</ul>
+
+			<figcaption className="font-mono text-xs text-muted">
+				{index + 1}/{withSrc.length} · {current.label}
+			</figcaption>
 		</figure>
 	);
 }
